@@ -1,4 +1,4 @@
-alias reload_aliases="source ~/.bahs_aliases"
+alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
 
 alias g="git"
