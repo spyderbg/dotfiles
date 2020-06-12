@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git config --local user.email "spyder_bg@yahoo.com"
+git config --local user.name "Spyder"
+
