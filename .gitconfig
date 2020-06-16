@@ -1,3 +1,29 @@
+[user]
+	email = 
+	name = 
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
+	trustExitCode = true
 [alias]
+	co = checkout
 	st = status
+	cl = config --local
 	ci = commit
+	br = branch
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	re = reset --soft HEAD
+[color]
+	ui = true
+[core]
+	autocrlf = true
+	excludesfile = C:\\Users\\pchernev\\Documents\\gitignore_global.txt
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = wincred
