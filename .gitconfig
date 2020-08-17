@@ -23,7 +23,7 @@
 	su = submodule update --init --recursive
 	ss = submodule status
 	l = log
-	lg = log -p
+	lg = --pretty="format:%h %C(bold blue)%ar %C(bold green)%s %C(yellow)%an"
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	last = log -1 HEAD
