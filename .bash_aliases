@@ -1,3 +1,4 @@
+# Global aliases
 
 alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
