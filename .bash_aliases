@@ -16,3 +16,4 @@ alias gma="git commit --amend"
 alias gds="git diff --chached"
 
 
+alias _proj="cd /mnt/d/Chibi/clicker-client"
