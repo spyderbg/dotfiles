@@ -31,7 +31,7 @@
 [color]
 	ui = true
 [core]
-	autocrlf = false
+	autocrlf = true
 	excludesFile = /home/spyder/.gitignore_global
 	editor = vim
 [filter "lfs"]
