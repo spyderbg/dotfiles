@@ -35,4 +35,3 @@ alias pm2-game-stop="pm2 stop game"
 alias pm2-dev-restart="ssh clicker@kinkoid01.hh 'pm2 restart clicker-content-dev' && ssh clicker@kinkoid01.hh 'pm2 restart clicker-game-dev'"
 alias pm2-dev-list="ssh clicker@kinkoid01.hh 'pm2 list'"
 
-# alias _proj="cd /mnt/d/Chibi/clicker-client"
