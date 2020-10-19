@@ -21,7 +21,7 @@ alias gl="clear && git lola -20"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias gmerge="git merge pre_develop"
-alias grelease="git checkout develop && git pull && git merge pre_develop && git push && git checkout pre_develop"
+alias grelease="git checkout dev && git pull && git merge develop && git push && git checkout develop"
 
 alias _proj="cd /mnt/d/Chibi/clicker-client/"
 alias _serv="cd /mnt/d/Chibi/clicker-server/"
