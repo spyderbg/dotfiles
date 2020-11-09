@@ -1,8 +1,8 @@
 # Global aliases
-
 alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
 
+# Git aliases
 alias g="git"
 alias ga="git add"
 alias gp="git push"
@@ -25,21 +25,15 @@ alias grelease="git checkout dev && git pull && git merge develop && git push &&
 alias grelease_stage="git checkout stage && git pull && git merge dev && git push && git checkout -"
 alias grelease_sandbox="git checkout nutaku_sandbox && git pull && git merge stage && git push && git checkout -"
 
-alias _proj="cd /mnt/c/_Projects/clicker-client/"
-alias _serv="cd /mnt/c/_Projects/clicker-server/"
-
-
-alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
-alias pm2-loader-stop="pm2 stop loader"
-alias pm2-game="pm2 start /mnt/c/_Projects/clicker-server/server/game.js"
-alias pm2-game-stop="pm2 stop game"
-
-alias pm2-dev-restart="ssh clicker@kinkoid01.hh 'pm2 restart clicker-content-dev' && ssh clicker@kinkoid01.hh 'pm2 restart clicker-game-dev'"
-alias pm2-dev-list="ssh clicker@kinkoid01.hh 'pm2 list'"
-
+# Docker aliases
+alias d="docker"
+alias dps="docker ps"
+alias drun="docker run"
+alias dstop="docker stop"
+alias drestart="dcoker restart"
+alias dpull="docker pull"
 
 # SSH machines
-
 alias ssh_build='ssh unity@10.48.22.13'
 alias ssh_dev='ssh clicker@kinkoid01.hh'
 alias ssh_clicker='ssh clicker@web6-ams.srv.aur.be'
@@ -49,4 +43,18 @@ alias ssh_nutaku='ssh clicker_nutaku@web6-ams.srv.aur.be'
 alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
+
+# Project paths
+alias _proj="cd /mnt/c/_Projects/clicker-client/"
+alias _serv="cd /mnt/c/_Projects/clicker-server/"
+
+# PM2 commands
+alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
+alias pm2-loader-stop="pm2 stop loader"
+alias pm2-game="pm2 start /mnt/c/_Projects/clicker-server/server/game.js"
+alias pm2-game-stop="pm2 stop game"
+
+alias pm2-dev-restart="ssh clicker@kinkoid01.hh 'pm2 restart clicker-content-dev' && ssh clicker@kinkoid01.hh 'pm2 restart clicker-game-dev'"
+alias pm2-dev-list="ssh clicker@kinkoid01.hh 'pm2 list'"
+
 
