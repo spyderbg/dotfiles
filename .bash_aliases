@@ -58,3 +58,4 @@ alias pm2-dev-restart="ssh clicker@kinkoid01.hh 'pm2 restart clicker-content-dev
 alias pm2-dev-list="ssh clicker@kinkoid01.hh 'pm2 list'"
 
 
+
