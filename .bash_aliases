@@ -3,6 +3,8 @@
 alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
 
+# Git aliases
+
 alias g="git"
 alias ga="git add"
 alias gp="git push"
@@ -22,6 +24,14 @@ alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias gmerge="git merge pre_develop"
 alias grelease="git checkout dev && git pull && git merge develop && git push && git checkout develop"
+
+# Docker aliases
+alias d="docker"
+alias dps="docker ps"
+alias drun="docker run"
+alias dstop="docker stop"
+alias drestart="dcoker restart"
+alias dpull="docker pull"
 
 alias _proj="cd /mnt/d/Chibi/clicker-client/"
 alias _serv="cd /mnt/d/Chibi/clicker-server/"
