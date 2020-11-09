@@ -32,6 +32,7 @@ alias drun="docker run"
 alias dstop="docker stop"
 alias drestart="dcoker restart"
 alias dpull="docker pull"
+alias dimages="docker images"
 
 # SSH machines
 alias ssh_build='ssh unity@10.48.22.13'
