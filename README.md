@@ -5,11 +5,6 @@ for f in $(\ls -A ./tmp); do mv "./tmp/$f" "./$f"; done &&
 rmdir tmp
 
 
-## Git local cofnig 
-
-git config --local user.email "spyder_bg@yahoo.com"
-git config --local user.name "Spyder"
-
 ## Windows vimfiles
 vimfiles [P:\Vim]
 mklink /D vimfiles P:\Vim
