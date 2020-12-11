@@ -20,10 +20,11 @@ alias gds="git diff --chached"
 alias gl="clear && git lola -18"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
-alias gmerge="git merge pre_develop"
 alias grelease="git checkout dev && git pull && git merge develop && git push && git checkout -"
 alias grelease_stage="git checkout stage && git pull && git merge dev && git push && git checkout -"
-alias grelease_sandbox="git checkout nutaku_sandbox && git pull && git merge stage && git push && git checkout -"
+alias grelease_prod="git checkout prod && git pull && git merge stage && git push && git checkout -"
+alias grelease_sbox="git checkout nutaku_sandbox && git pull && git merge stage && git push && git checkout -"
+alias grelease_nutaku="git checkout nutaku && git pull && git merge stage && git push && git checkout -"
 
 # Docker aliases
 alias d="docker"
