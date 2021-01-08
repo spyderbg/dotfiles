@@ -49,6 +49,7 @@ alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
 # Project paths
 alias _proj="cd /mnt/c/_Projects/clicker-client/"
 alias _serv="cd /mnt/c/_Projects/clicker-server/"
+alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
