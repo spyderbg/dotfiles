@@ -47,6 +47,7 @@ alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
 
 # Project paths
+alias _temp="cd /mnt/c/_Projects/temp/"
 alias _proj="cd /mnt/c/_Projects/clicker-client/"
 alias _serv="cd /mnt/c/_Projects/clicker-server/"
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
