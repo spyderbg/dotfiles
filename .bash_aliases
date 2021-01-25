@@ -34,6 +34,7 @@ alias dstop="docker stop"
 alias drestart="dcoker restart"
 alias dpull="docker pull"
 alias dimages="docker images"
+alias dc="docker container"
 
 # SSH machines
 alias ssh_build='ssh unity@10.48.22.13'
@@ -48,8 +49,10 @@ alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
 
 # Project paths
 alias _temp="cd /mnt/c/_Projects/temp/"
-alias _proj="cd /mnt/c/_Projects/clicker-client/"
-alias _serv="cd /mnt/c/_Projects/clicker-server/"
+alias _proj="cd /mnt/c/_Projects/"
+alias _soh="cd /mnt/c/_Projects/soh-client/Assets/ScarsOfHonor/"
+alias _sohc="cd /mnt/c/_Projects/soh-client/"
+alias _sohs="cd /mnt/c/_Projects/soh-server/"
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 
 # PM2 commands
@@ -61,5 +64,10 @@ alias pm2-game-stop="pm2 stop game"
 alias pm2-dev-restart="ssh clicker@kinkoid01.hh 'pm2 restart clicker-content-dev' && ssh clicker@kinkoid01.hh 'pm2 restart clicker-game-dev'"
 alias pm2-dev-list="ssh clicker@kinkoid01.hh 'pm2 list'"
 
+# Mysql 
+alias sql_start="sudo service mysql start"
+alias sql_stop="sudo service mysql stop"
+alias sql_status="sudo service mysql status"
+alias sql_login="sudo mysql -u root -ppassword"
 
 
