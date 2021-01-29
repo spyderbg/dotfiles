@@ -53,7 +53,7 @@ alias _proj="cd /mnt/c/_Projects/"
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 alias _cpp="cd /mnt/c/_Projects/Cpp/"
 alias _unity="cd /mnt/c/_Projects/Unity/"
-alias _soh="cd /mnt/c/_Projects/soh-client/Assets/ScarsOfHonor/"
+alias _soh="cd /mnt/c/_Projects/BeastBurst/soh-client/Assets/ScarsOfHonor/"
 alias _sohc="cd /mnt/c/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd /mnt/c/_Projects/BeastBurst/soh-server/"
 
