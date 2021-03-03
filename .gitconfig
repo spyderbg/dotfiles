@@ -1,6 +1,6 @@
 [user]
-	email = 
-	name = 
+	email = chernev@beastburst.com
+	name = Spyder
 [difftool "sourcetree"]
 	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]

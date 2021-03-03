@@ -10,6 +10,8 @@ alias gg="git status"
 alias gs="git stash"
 alias gb="git branch"
 alias gc="git checkout"
+alias gf="git fetch"
+alias gfp="git fetch --prune"
 alias gsa="git stash apply"
 alias gsc="git stash clear"
 alias gsp="git stash pop"
@@ -67,6 +69,7 @@ alias pm2-dev-restart="ssh clicker@kinkoid01.hh 'pm2 restart clicker-content-dev
 alias pm2-dev-list="ssh clicker@kinkoid01.hh 'pm2 list'"
 
 # Mysql 
+alias sql_open="sudo mysql -u root -ppassword vibranium_auth"
 alias sql_start="sudo service mysql start"
 alias sql_stop="sudo service mysql stop"
 alias sql_status="sudo service mysql status"
