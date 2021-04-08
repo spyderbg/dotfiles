@@ -17,3 +17,10 @@ vmlogs
 source $HOME/vimfiles/_gvimrc
 source $HOME/vimfiles/_vimrc
 
+
+
+## Cmake build 
+mkdir build && cd build
+cmake ../
+make
+
