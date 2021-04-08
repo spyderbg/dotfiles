@@ -31,13 +31,13 @@ alias grelease_nutaku="git checkout nutaku && git pull && git merge stage && git
 
 # Docker aliases
 alias d="docker"
-alias dps="docker ps"
-alias drun="docker run"
-alias dstop="docker stop"
-alias drestart="dcoker restart"
-alias dpull="docker pull"
-alias dimages="docker images"
-alias dc="docker container"
+alias di="sudo docker images"
+alias dc="sudo docker container"
+alias dps="sudo docker ps"
+alias drun="sudo docker run"
+alias dstop="sudo docker stop"
+alias drestart="sudo dcoker restart"
+alias dpull="sudo docker pull"
 
 # SSH machines
 alias ssh_build='ssh unity@10.48.22.13'
