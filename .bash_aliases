@@ -77,4 +77,7 @@ alias sql_stop="sudo service mysql stop"
 alias sql_status="sudo service mysql status"
 alias sql_login="sudo mysql -u root -ppassword"
 
+# Ports
+alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN"
+
 
