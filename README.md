@@ -15,6 +15,7 @@ vimfiles_old
 vmlogs
 
 source $HOME/vimfiles/_gvimrc
+
 source $HOME/vimfiles/_vimrc
 
 
@@ -24,3 +25,6 @@ mkdir build && cd build
 cmake ../
 make
 
+
+## Run mysql in docker container
+drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0
