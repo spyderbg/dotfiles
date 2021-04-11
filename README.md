@@ -21,8 +21,8 @@ source $HOME/vimfiles/_vimrc
 
 
 ## Cmake build 
-    ``mkdir build && cd build``
-    ``cmake ../``
+    ``mkdir build && cd build \
+    cmake ../``
     ``make``
 
 
