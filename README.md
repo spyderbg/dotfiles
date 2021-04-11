@@ -27,7 +27,11 @@ source $HOME/vimfiles/_vimrc
 
 
 ## Run mysql in docker container
-``drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0``
+`drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0`
 
 ## Ubuntu net-tools (ifconfig)
-``sudo apt install net-tools``
+`sudo apt install net-tools`
+
+## Ubuntu sshd
+`sudo apt update`
+`sudo apt install openssh-server`
