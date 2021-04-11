@@ -28,3 +28,6 @@ make
 
 ## Run mysql in docker container
 drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0
+
+## Ubuntu net-tools (ifconfig)
+sudo apt install net-tools
