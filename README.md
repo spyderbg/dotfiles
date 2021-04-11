@@ -33,5 +33,7 @@ source $HOME/vimfiles/_vimrc
 `sudo apt install net-tools`
 
 ## Ubuntu sshd
+
 `sudo apt update`
+
 `sudo apt install openssh-server`
