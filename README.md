@@ -21,9 +21,9 @@ source $HOME/vimfiles/_vimrc
 
 
 ## Cmake build 
-  ``mkdir build && cd build``
-  ``cmake ../``
-  ``make``
+    ``mkdir build && cd build``
+    ``cmake ../``
+    ``make``
 
 
 ## Run mysql in docker container
