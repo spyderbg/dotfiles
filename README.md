@@ -37,3 +37,5 @@ source $HOME/vimfiles/_vimrc
 `sudo apt update`
 
 `sudo apt install openssh-server`
+
+`sudo ufw allow ssh`
