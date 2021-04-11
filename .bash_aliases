@@ -50,6 +50,7 @@ alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
 alias ssh_srv='ssh spyder@192.168.0.106'
+alias ssh_miner='ssh spyder@192.168.0.104'
 
 # Project paths
 alias _temp="cd /mnt/c/_Projects/temp/"
