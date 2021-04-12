@@ -78,3 +78,11 @@ alias sql_status="sudo service mysql status"
 alias sql_login="sudo mysql -u root -ppassword"
 
 
+# SoH commands
+alias auth_start="~/_Projects/BeastBurst/soh-server/Scripts/start_authserver.sh"
+alias auth_stop="~/_Projects/BeastBurst/soh-server/Scripts/stop_authserver.sh"
+alias auth_status="~/_Projects/BeastBurst/soh-server/Scripts/status_authserver.sh"
+alias world_start="~/_Projects/BeastBurst/soh-server/Scripts/start_worldserver.sh"
+alias world_stop="~/_Projects/BeastBurst/soh-server/Scripts/stop_worldserver.sh"
+alias world_status="~/_Projects/BeastBurst/soh-server/Scripts/status_worldserver.sh"
+
