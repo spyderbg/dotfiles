@@ -49,6 +49,8 @@ alias ssh_nutaku='ssh clicker_nutaku@web6-ams.srv.aur.be'
 alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
+alias ssh_srv='ssh spyder@192.168.0.106'
+alias ssh_miner='ssh spyder@192.168.0.104'
 
 # Project paths
 alias _temp="cd /mnt/c/_Projects/temp/"
@@ -76,6 +78,9 @@ alias sql_start="sudo service mysql start"
 alias sql_stop="sudo service mysql stop"
 alias sql_status="sudo service mysql status"
 alias sql_login="sudo mysql -u root -ppassword"
+
+# Ports
+alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN"
 
 
 # SoH commands
