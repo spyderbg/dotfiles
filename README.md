@@ -41,11 +41,7 @@ source $HOME/vimfiles/_vimrc
 `sudo ufw allow ssh`
 
 ## SoH libraries
-
- `sudo apt install libboost1.71-dev`
  
  `sudo apt install cmake -y`
  
- `sudo apt install mysql-client-8.0`
- 
- `sudo apt install libreadline-dev -y`
+ `sudo apt install libboost1.71-dev mysql-client-8.0 libreadline-dev -y`
