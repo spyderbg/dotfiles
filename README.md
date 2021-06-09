@@ -39,3 +39,8 @@ source $HOME/vimfiles/_vimrc
 `sudo apt install openssh-server`
 
 `sudo ufw allow ssh`
+
+## SoH libraries
+ `sudo apt install libboost1.71-dev`
+ `sudo apt install cmake -y`
+ `sudo apt install mysql-client-8.0`
