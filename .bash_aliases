@@ -45,8 +45,15 @@ alias ssh_nutaku='ssh clicker_nutaku@web6-ams.srv.aur.be'
 alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
-alias ssh_srv='ssh spyder@192.168.0.106'
-alias ssh_miner='ssh spyder@192.168.0.104'
+alias ssh_ptr='sshpass -p ptr@312 ssh ptr@5.79.84.53'
+alias ssh_103='sshpass -p spyder ssh spyder@192.168.0.103'
+alias ssh_105='sshpass -p spyder ssh spyder@192.168.0.105'
+alias ssh_106='sshpass -p spyder ssh spyder@192.168.0.106'
+alias ssh_107='sshpass -p spyder ssh spyder@192.168.0.107'
+alias ssh_109='sshpass -p spyder ssh spyder@192.168.0.109'
+alias ssh_110='sshpass -p spyder ssh spyder@192.168.0.110'
+alias ssh_111='sshpass -p spyder ssh spyder@192.168.0.111'
+alias ssh_113='sshpass -p spyder ssh spyder@192.168.0.113'
 
 # Project paths
 alias _temp="cd /mnt/c/_Projects/temp/"
@@ -77,7 +84,6 @@ alias sql_login="sudo mysql -u root -ppassword"
 
 # Ports
 alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN"
-
 
 # SoH commands
 alias auth_start="~/_Projects/BeastBurst/soh-server/Scripts/start_authserver.sh"
