@@ -100,7 +100,7 @@ alias world_build="~/_Projects/BeastBurst/soh-server/Scripts/build_worldserver.s
 # Chia commands
 alias chia-plots='ps -aux | grep "chia plots"'
 alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
-alias chia-list-plots='find . -maxdepth 3 -iname "*.plot"'
-alias chia-list-num-plots='find . -maxdepth 3 -iname "*.plot" | wc -l'
+alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
+alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 
 
