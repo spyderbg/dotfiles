@@ -46,14 +46,16 @@ alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
 alias ssh_ptr='sshpass -p ptr@312 ssh ptr@5.79.84.53'
-alias ssh_103='sshpass -p spyder ssh spyder@192.168.0.103'
-alias ssh_105='sshpass -p spyder ssh spyder@192.168.0.105'
-alias ssh_106='sshpass -p spyder ssh spyder@192.168.0.106'
-alias ssh_107='sshpass -p spyder ssh spyder@192.168.0.107'
-alias ssh_109='sshpass -p spyder ssh spyder@192.168.0.109'
-alias ssh_110='sshpass -p spyder ssh spyder@192.168.0.110'
-alias ssh_111='sshpass -p spyder ssh spyder@192.168.0.111'
-alias ssh_113='sshpass -p spyder ssh spyder@192.168.0.113'
+alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
+alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
+alias ssh-105='sshpass -p spyder ssh spyder@192.168.0.105'
+alias ssh-106='sshpass -p spyder ssh spyder@192.168.0.106'
+alias ssh-107='sshpass -p spyder ssh spyder@192.168.0.107'
+alias ssh-108='sshpass -p spyder ssh spyder@192.168.0.108'
+alias ssh-109='sshpass -p spyder ssh spyder@192.168.0.109'
+alias ssh-110='sshpass -p spyder ssh spyder@192.168.0.110'
+alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
+alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 
 # Project paths
 alias _temp="cd /mnt/c/_Projects/temp/"
@@ -94,4 +96,11 @@ alias world_start="~/_Projects/BeastBurst/soh-server/Scripts/start_worldserver.s
 alias world_stop="~/_Projects/BeastBurst/soh-server/Scripts/stop_worldserver.sh"
 alias world_status="~/_Projects/BeastBurst/soh-server/Scripts/status_worldserver.sh"
 alias world_build="~/_Projects/BeastBurst/soh-server/Scripts/build_worldserver.sh"
+
+# Chia commands
+alias chia-plots='ps -aux | grep "chia plots"'
+alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
+alias chia-list-plots='find . -maxdepth 3 -iname "*.plot"'
+alias chia-list-num-plots='find . -maxdepth 3 -iname "*.plot" | wc -l'
+
 
