@@ -2,7 +2,7 @@
 
 ``git clone https://spyderbg@github.com/spyderbg/dotfiles.git tmp &&
 for f in $(\ls -A ./tmp); do mv "./tmp/$f" "./$f"; done &&
-rmdir tmp``
+rmdir tmp && source .bashrc``
 
 
 ## Windows vimfiles
@@ -39,3 +39,9 @@ source $HOME/vimfiles/_vimrc
 `sudo apt install openssh-server`
 
 `sudo ufw allow ssh`
+
+## SoH libraries
+ 
+ `sudo apt install cmake -y`
+ 
+ `sudo apt install libboost1.71-dev mysql-client-8.0 libreadline-dev -y`

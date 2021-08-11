@@ -45,8 +45,25 @@ alias ssh_nutaku='ssh clicker_nutaku@web6-ams.srv.aur.be'
 alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
-alias ssh_srv='ssh spyder@192.168.0.106'
-alias ssh_miner='ssh spyder@192.168.0.104'
+alias ssh_ptr='sshpass -p ptr@312 ssh ptr@5.79.84.53'
+alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
+alias ssh-103-plots='sshpass -p spyder ssh spyder@192.168.0.103 "ps -aux | grep \"chia plots\""'
+alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
+alias ssh-104-plots='sshpass -p spyder ssh spyder@192.168.0.104 "ps -aux | grep \"chia plots\""'
+alias ssh-105='sshpass -p spyder ssh spyder@192.168.0.105'
+alias ssh-105-plots='sshpass -p spyder ssh spyder@192.168.0.105 "ps -aux | grep \"chia plots\""'
+alias ssh-106='sshpass -p spyder ssh spyder@192.168.0.106'
+alias ssh-106-plots='sshpass -p spyder ssh spyder@192.168.0.106 "ps -aux | grep \"chia plots\""'
+alias ssh-107='sshpass -p spyder ssh spyder@192.168.0.107'
+alias ssh-107-plots='sshpass -p spyder ssh spyder@192.168.0.107 "ps -aux | grep \"chia plots\""'
+alias ssh-108='sshpass -p spyder ssh spyder@192.168.0.108'
+alias ssh-108-plots='sshpass -p spyder ssh spyder@192.168.0.108 "ps -aux | grep \"chia plots\""'
+alias ssh-109='sshpass -p spyder ssh spyder@192.168.0.109'
+alias ssh-109-plots='sshpass -p spyder ssh spyder@192.168.0.109 "ps -aux | grep \"chia plots\""'
+alias ssh-110='sshpass -p spyder ssh spyder@192.168.0.110'
+alias ssh-110-plots='sshpass -p spyder ssh spyder@192.168.0.110 "ps -aux | grep \"chia plots\""'
+alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
+alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 
 # Project paths
 alias _temp="cd /mnt/c/_Projects/temp/"
@@ -78,7 +95,6 @@ alias sql_login="sudo mysql -u root -ppassword"
 # Ports
 alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN"
 
-
 # SoH commands
 alias auth_start="~/_Projects/BeastBurst/soh-server/Scripts/start_authserver.sh"
 alias auth_stop="~/_Projects/BeastBurst/soh-server/Scripts/stop_authserver.sh"
@@ -90,4 +106,12 @@ alias world_status="~/_Projects/BeastBurst/soh-server/Scripts/status_worldserver
 alias world_build="~/_Projects/BeastBurst/soh-server/Scripts/build_worldserver.sh"
 alias emul_build="~/_Projects/BeastBurst/soh-server/Scripts/build_emulator.sh"
 alias soh_build="emul_build && auth_build && world_build"
+
+# Chia commands
+alias chia-plots='ps -aux | grep "chia plots"'
+alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
+alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
+alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
+alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
+
 
