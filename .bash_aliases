@@ -88,4 +88,6 @@ alias world_start="~/_Projects/BeastBurst/soh-server/Scripts/start_worldserver.s
 alias world_stop="~/_Projects/BeastBurst/soh-server/Scripts/stop_worldserver.sh"
 alias world_status="~/_Projects/BeastBurst/soh-server/Scripts/status_worldserver.sh"
 alias world_build="~/_Projects/BeastBurst/soh-server/Scripts/build_worldserver.sh"
+alias emul_build="~/_Projects/BeastBurst/soh-server/Scripts/build_emulator.sh"
+alias soh_build="emul_build && auth_build && world_build"
 
