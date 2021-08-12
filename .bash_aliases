@@ -63,6 +63,7 @@ alias ssh-109-plots='sshpass -p spyder ssh spyder@192.168.0.109 "ps -aux | grep 
 alias ssh-110='sshpass -p spyder ssh spyder@192.168.0.110'
 alias ssh-110-plots='sshpass -p spyder ssh spyder@192.168.0.110 "ps -aux | grep \"chia plots\""'
 alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
+alias ssh-112='sshpass -p spyder ssh spyder@192.168.0.112'
 alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 
 # Project paths
