@@ -45,3 +45,8 @@ source $HOME/vimfiles/_vimrc
  `sudo apt install cmake -y`
  
  `sudo apt install libboost1.71-dev mysql-client-8.0 libreadline-dev -y`
+ 
+ ## AmdGpu-Clocks
+ 
+ [amdgpu-clocks](https://github.com/sibradzic/amdgpu-clocks)
+ 
