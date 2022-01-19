@@ -28,6 +28,7 @@ source $HOME/vimfiles/_vimrc
 
 ## Run mysql in docker container
 `drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0`
+`drun --name soh-mariadb -e MYSQL_ROOT_PASSWORD=admin -p 3308:3306/tcp -d mariadb:10.5-focal`
 
 ## Ubuntu net-tools (ifconfig)
 `sudo apt install net-tools`
