@@ -52,3 +52,27 @@ source $HOME/vimfiles/_vimrc
  
  [amdgpu-clocks](https://github.com/sibradzic/amdgpu-clocks)
  
+ ## Ubuntu keyboard
+ 
+ `echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode`
+ 
+ '
+ clear control
+clear mod4
+
+keycode 105 = 
+keycode 206 =
+
+keycode 133 = Control_L NoSymbol Control_L
+keycode 134 = Control_R NoSymbol Control_R
+keycode 37 = Super_L NoSymbol Super_L
+
+add control = Control_L
+add control = Control_R
+add mod4 = Super_L
+'
+
+`['caps:escape']`
+
+ 
+ 
