@@ -117,4 +117,3 @@ alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
 
-
