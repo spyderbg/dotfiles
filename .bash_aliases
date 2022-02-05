@@ -27,8 +27,10 @@ alias grelease="git checkout master && git pull && git merge develop && git push
 
 # Docker aliases
 alias d="docker"
-alias di="sudo docker images"
+alias di="sudo docker image"
+alias dis="sudo docker images"
 alias dc="sudo docker container"
+alias db="sudo docker build"
 alias dps="sudo docker ps"
 alias drun="sudo docker run"
 alias dstop="sudo docker stop"
