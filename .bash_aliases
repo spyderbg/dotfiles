@@ -27,8 +27,10 @@ alias grelease="git checkout master && git pull && git merge develop && git push
 
 # Docker aliases
 alias d="docker"
-alias di="sudo docker images"
+alias di="sudo docker image"
+alias dis="sudo docker images"
 alias dc="sudo docker container"
+alias db="sudo docker build"
 alias dps="sudo docker ps"
 alias drun="sudo docker run"
 alias dstop="sudo docker stop"
@@ -63,6 +65,7 @@ alias ssh-109-plots='sshpass -p spyder ssh spyder@192.168.0.109 "ps -aux | grep 
 alias ssh-110='sshpass -p spyder ssh spyder@192.168.0.110'
 alias ssh-110-plots='sshpass -p spyder ssh spyder@192.168.0.110 "ps -aux | grep \"chia plots\""'
 alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
+alias ssh-112='sshpass -p spyder ssh spyder@192.168.0.112'
 alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 
 # Project paths
@@ -104,6 +107,8 @@ alias world_start="~/_Projects/BeastBurst/soh-server/Scripts/start_worldserver.s
 alias world_stop="~/_Projects/BeastBurst/soh-server/Scripts/stop_worldserver.sh"
 alias world_status="~/_Projects/BeastBurst/soh-server/Scripts/status_worldserver.sh"
 alias world_build="~/_Projects/BeastBurst/soh-server/Scripts/build_worldserver.sh"
+alias emul_build="~/_Projects/BeastBurst/soh-server/Scripts/build_emulator.sh"
+alias soh_build="emul_build && auth_build && world_build"
 
 # Chia commands
 alias chia-plots='ps -aux | grep "chia plots"'
@@ -111,5 +116,4 @@ alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
 alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
-
 
