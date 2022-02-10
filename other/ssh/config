@@ -1,0 +1,8 @@
+Host code.scarsgaming.net
+	HostName code.scarsgaming.net
+	Port 444
+
+Host github.com
+	HostName github.com
+	Port 22
+
