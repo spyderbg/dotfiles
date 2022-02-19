@@ -54,11 +54,11 @@ source $HOME/vimfiles/_vimrc
  
  ## Ubuntu keyboard
  
- `echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode`
+```echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode```
  
- `
- clear control
- clear mod4
+```
+clear control
+clear mod4
 
 keycode 105 = 
 keycode 206 =
@@ -70,9 +70,9 @@ keycode 37 = Super_L NoSymbol Super_L
 add control = Control_L
 add control = Control_R
 add mod4 = Super_L
-`
+```
 
-`['caps:escape']`
+```['caps:escape']```
 
  
  
