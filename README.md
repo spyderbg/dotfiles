@@ -31,6 +31,8 @@ source $HOME/vimfiles/_vimrc
 
 `drun --name soh-mariadb -e MYSQL_ROOT_PASSWORD=admin -p 3308:3306/tcp -d mariadb:10.5-focal`
 
+```netsh interface portproxy add v4tov4 listenport=7070 listenaddress=0.0.0.0 connectport=7070 connectaddress=172.17.25.7```
+
 ## Ubuntu net-tools (ifconfig)
 `sudo apt install net-tools`
 
