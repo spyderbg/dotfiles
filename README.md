@@ -59,7 +59,9 @@ source $HOME/vimfiles/_vimrc
  
  ## Ubuntu keyboard
  
-```echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode```
+```
+echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+```
  
 ```
 clear control
@@ -77,7 +79,9 @@ add control = Control_R
 add mod4 = Super_L
 ```
 
-```['caps:escape']```
+```
+['caps:escape']
+```
 
  
  
