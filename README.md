@@ -1,8 +1,10 @@
 # Clone dotfiles
 
-```git clone git@github.com:spyderbg/dotfiles.git tmp &&
+```
+git clone git@github.com:spyderbg/dotfiles.git tmp &&
 for f in $(\ls -A ./tmp); do mv "./tmp/$f" "./$f"; done &&
-rmdir tmp && source .bashrc```
+rmdir tmp && source .bashrc
+```
 
 
 ## Windows vimfiles
