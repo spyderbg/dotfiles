@@ -7,6 +7,7 @@ alias g="git"
 alias ga="git add"
 alias gp="git push"
 alias gg="git status"
+alias ggs="git status -s | cut -c4-"
 alias gs="git stash"
 alias gb="git branch"
 alias gc="git checkout"
@@ -48,6 +49,7 @@ alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
 alias ssh_date='ssh date@web6-ams.srv.aur.be'
 alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
 alias ssh_ptr='sshpass -p ptr@312 ssh ptr@5.79.84.53'
+alias ssh_ptr1='sshpass -p ptr@312 ssh ptr1@37.48.76.133'
 alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
 alias ssh-103-plots='sshpass -p spyder ssh spyder@192.168.0.103 "ps -aux | grep \"chia plots\""'
 alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
@@ -69,11 +71,11 @@ alias ssh-112='sshpass -p spyder ssh spyder@192.168.0.112'
 alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 
 # Project paths
-alias _temp="cd /mnt/c/_Projects/temp/"
-alias _proj="cd /mnt/c/_Projects/"
+alias _proj='cd ~/_Projects/'
+alias _temp='cd ~/_Projects/temp/'
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
-alias _cpp="cd /mnt/c/_Projects/Cpp/"
-alias _unity="cd /mnt/c/_Projects/Unity/"
+alias _cpp='cd ~/_Projects/Cpp/'
+alias _unity='cd /mnt/c/_Projects/Unity/'
 alias _soh="cd ~/_Projects/BeastBurst/soh-client/Assets/ScarsOfHonor/"
 alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
@@ -116,4 +118,7 @@ alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
 alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
+
+# Ubuntu
+alias xmod='xmodmap ~/.Xmodmap'
 
