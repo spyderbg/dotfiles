@@ -43,3 +43,6 @@
 	required = true
 [http]
 	sslVerify = false
+[mergetool "gitblade"]
+	cmd = \"/home/spyder/Downloads/gitblade/gitblade\" -c \"\"
+	trustExitCode = true
