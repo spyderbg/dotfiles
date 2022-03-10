@@ -2,6 +2,9 @@
 alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
 
+# Common aliases
+alias xclip='xclip -sel clip'
+
 # Git aliases
 alias g="git"
 alias ga="git add"
@@ -22,12 +25,14 @@ alias gma="git commit --amend"
 alias gd="git diff"
 alias gds="git diff --chached"
 alias gl="clear && git lola -18"
+alias glp="git log -p -1"
+alias glt="clear && git log --since=yesterday"
+alias glgt="clear && git graph --since=yesterday"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
 
 # Docker aliases
-alias d="docker"
 alias di="sudo docker image"
 alias dis="sudo docker images"
 alias dc="sudo docker container"
