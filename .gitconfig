@@ -34,8 +34,6 @@
 	autocrlf = false
 	excludesFile = /home/spyder/.gitignore_global
 	editor = vim
-[credential]
-	helper = wincred
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
