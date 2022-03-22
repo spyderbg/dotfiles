@@ -43,6 +43,7 @@ alias drun="sudo docker run"
 alias dstop="sudo docker stop"
 alias drestart="sudo dcoker restart"
 alias dpull="sudo docker pull"
+alias dexec="sudo docker exec -it"
 
 # SSH machines
 alias ssh_build='ssh unity@10.48.22.13'
@@ -101,7 +102,8 @@ alias sql_open="sudo mysql -u root -ppassword vibranium_auth"
 alias sql_start="sudo service mysql start"
 alias sql_stop="sudo service mysql stop"
 alias sql_status="sudo service mysql status"
-alias sql_login="sudo mysql -u root -ppassword"
+alias sql_login="sudo mysql -u root -ppassword -P 3308"
+alias sql_dump="sudo mysqldump -u root -ppassword -P 3308 --lock-tables"
 
 # Ports
 alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN"
