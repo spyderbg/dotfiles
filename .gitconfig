@@ -34,8 +34,6 @@
 	autocrlf = false
 	excludesFile = /home/spyder/.gitignore_global
 	editor = vim
-[credential]
-	helper = wincred
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -43,3 +41,6 @@
 	required = true
 [http]
 	sslVerify = false
+[mergetool "gitblade"]
+	cmd = \"/home/spyder/Downloads/gitblade/gitblade\" -c \"\"
+	trustExitCode = true
