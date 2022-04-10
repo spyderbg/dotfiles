@@ -1,8 +1,11 @@
 # Clone dotfiles
 
-``git clone https://spyderbg@github.com/spyderbg/dotfiles.git tmp &&
-for f in $(\ls -A ./tmp); do mv "./tmp/$f" "./$f"; done &&
-rmdir tmp && source .bashrc``
+```
+git clone git@github.com:spyderbg/dotfiles.git tmp && \ 
+for f in $(\ls -A ./tmp); do mv "./tmp/$f" "./$f"; done && \
+rmdir tmp && \
+source .bashrc
+```
 
 
 ## Windows vimfiles
@@ -31,6 +34,8 @@ source $HOME/vimfiles/_vimrc
 
 `drun --name soh-mariadb -e MYSQL_ROOT_PASSWORD=admin -p 3308:3306/tcp -d mariadb:10.5-focal`
 
+```netsh interface portproxy add v4tov4 listenport=7070 listenaddress=0.0.0.0 connectport=7070 connectaddress=172.17.25.7```
+
 ## Ubuntu net-tools (ifconfig)
 `sudo apt install net-tools`
 
@@ -54,11 +59,13 @@ source $HOME/vimfiles/_vimrc
  
  ## Ubuntu keyboard
  
- `echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode`
+```
+echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+```
  
- `
- clear control
- clear mod4
+```
+clear control
+clear mod4
 
 keycode 105 = 
 keycode 206 =
@@ -70,9 +77,11 @@ keycode 37 = Super_L NoSymbol Super_L
 add control = Control_L
 add control = Control_R
 add mod4 = Super_L
-`
+```
 
-`['caps:escape']`
+```
+['caps:escape']
+```
 
  
  
