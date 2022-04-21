@@ -37,25 +37,33 @@ source $HOME/vimfiles/_vimrc
 ```netsh interface portproxy add v4tov4 listenport=7070 listenaddress=0.0.0.0 connectport=7070 connectaddress=172.17.25.7```
 
 ## Ubuntu net-tools (ifconfig)
-`sudo apt install net-tools`
+```
+sudo apt install net-tools
+```
 
 ## Ununty exFat 
 
-```sudo apt install exfat-fuse exfat-utils```
+```
+sudo apt install exfat-fuse exfat-utils
+```
 
 ## Ubuntu sshd
 
-`sudo apt update`
+```
+sudo apt update
 
-`sudo apt install openssh-server`
+sudo apt install openssh-server
 
-`sudo ufw allow ssh`
+sudo ufw allow ssh
+```
 
 ## SoH libraries
  
- `sudo apt install cmake -y`
+ ```
+ sudo apt install cmake -y
  
- `sudo apt install libboost1.71-dev mysql-client-8.0 libreadline-dev -y`
+ sudo apt install libboost1.71-dev mysql-client-8.0 libreadline-dev -y
+ ```
  
  ## AmdGpu-Clocks
  
