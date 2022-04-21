@@ -39,6 +39,10 @@ source $HOME/vimfiles/_vimrc
 ## Ubuntu net-tools (ifconfig)
 `sudo apt install net-tools`
 
+## Ununty exFat 
+
+```sudo apt install exfat-fuse exfat-utils```
+
 ## Ubuntu sshd
 
 `sudo apt update`
