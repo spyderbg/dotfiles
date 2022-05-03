@@ -88,6 +88,7 @@ alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
+alias _moon='cd ~/_Projects/Myria/myria-moonville-prototype'
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
