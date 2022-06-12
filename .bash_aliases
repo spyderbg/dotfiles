@@ -33,6 +33,10 @@ alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
 
+# Svn aliases
+alias ss='svn stat'
+alias sa='svn add'
+
 # Docker aliases
 alias di="sudo docker image"
 alias dis="sudo docker images"
