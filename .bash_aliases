@@ -94,7 +94,7 @@ alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
-alias _moon='cd ~/_Projects/Myria/myria-moonville-prototype'
+alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 
 # PM2 commands
