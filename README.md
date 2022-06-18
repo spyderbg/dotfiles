@@ -30,19 +30,33 @@ source $HOME/vimfiles/_vimrc
 
 
 ## Run mysql in docker container
-```drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0```
+```
+drun --name soh-mysql -e MYSQL_ROOT_PASSWORD=admin -p 3307:3306/tcp -d mysql:8.0
+```
 
-```drun --name soh-mariadb -e MYSQL_ROOT_PASSWORD=admin -p 3308:3306/tcp -d mariadb:10.5-focal```
+```
+drun --name soh-mariadb -e MYSQL_ROOT_PASSWORD=admin -p 3308:3306/tcp -d mariadb:10.5-focal
+```
 
-```drun --name myria-redis -d redis:6.0.16 -p 6379:6379/tcp```
+```
+drun --name myria-redis -d redis:6.0.16 -p 6379:6379/tcp
+```
 
-```drun --name myria-postgres -e POSTGRES_PASSWORD=123456 -p 5432:5432/tcp -d postgres:14.0```
+```
+drun --name myria-postgres -e POSTGRES_PASSWORD=123456 -p 5432:5432/tcp -d postgres:14.0
+```
 
-```netsh interface portproxy add v4tov4 listenport=7070 listenaddress=0.0.0.0 connectport=7070 connectaddress=172.17.25.7```
+```
+netsh interface portproxy add v4tov4 listenport=7070 listenaddress=0.0.0.0 connectport=7070 connectaddress=172.17.25.7
+```
 
-```netsh interface portproxy add v4tov4 listenport=6379 listenaddress=0.0.0.0 connectport=6379 connectaddress=172.17.25.7```
+```
+netsh interface portproxy add v4tov4 listenport=6379 listenaddress=0.0.0.0 connectport=6379 connectaddress=172.17.25.7
+```
 
-```netsh interface portproxy add v4tov4 listenport=5432 listenaddress=0.0.0.0 connectport=5432 connectaddress=172.17.25.7```
+```
+netsh interface portproxy add v4tov4 listenport=5432 listenaddress=0.0.0.0 connectport=5432 connectaddress=172.17.25.7
+```
 
 ## Ubuntu net-tools (ifconfig)
 ```
