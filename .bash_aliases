@@ -9,6 +9,7 @@ alias xclip='xclip -sel clip'
 alias g="git"
 alias ga="git add"
 alias gp="git push"
+alias gpsub='git pull && git submodule update'
 alias gg="git status"
 alias ggs="git status -s | cut -c4-"
 alias gs="git stash"
