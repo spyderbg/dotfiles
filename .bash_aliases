@@ -32,7 +32,7 @@ alias glgt="clear && git graph --since=yesterday"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
-alias gsub="cd $(cat .gitmodules | grep 'path' | awk '{print $3}')"
+alias gsub='cd $(cat .gitmodules | grep path | awk `{print $3}`)'
 
 # Svn aliases
 alias ss='svn stat'
