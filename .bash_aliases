@@ -9,6 +9,7 @@ alias xclip='xclip -sel clip'
 alias g="git"
 alias ga="git add"
 alias gp="git push"
+alias gpsub='git pull && git submodule update'
 alias gg="git status"
 alias ggs="git status -s | cut -c4-"
 alias gs="git stash"
@@ -32,6 +33,11 @@ alias glgt="clear && git lola -18"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
+alias gsub='cd $(cat .gitmodules | grep path | awk `{print $3}`)'
+
+# Svn aliases
+alias ss='svn stat'
+alias sa='svn add'
 
 # Docker aliases
 alias di="sudo docker image"
@@ -46,6 +52,8 @@ alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
 # SSH machines
+alias ssh-home='ssh spyder@82.103.77.45'
+alias ssh-office='ssh spyder@92.247.193.20'
 alias ssh_build='ssh unity@10.48.22.13'
 alias ssh_dev='ssh clicker@kinkoid01.hh'
 alias ssh_clicker='ssh clicker@web6-ams.srv.aur.be'
@@ -89,6 +97,8 @@ alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
+alias _moon='cd ~/_Projects/Myria/myria-moonville'
+alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"

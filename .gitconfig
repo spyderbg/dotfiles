@@ -2,9 +2,10 @@
 	email = chernev@beastburst.com
 	name = Spyder
 [difftool "sourcetree"]
-	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\"
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-	cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 	trustExitCode = true
 [alias]
 	s = status
@@ -41,6 +42,3 @@
 	required = true
 [http]
 	sslVerify = false
-[mergetool "gitblade"]
-	cmd = \"/home/spyder/Downloads/gitblade/gitblade\" -c \"\"
-	trustExitCode = true
