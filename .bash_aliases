@@ -33,7 +33,13 @@ alias glgt="clear && git lola -18"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
-alias gsub='cd $(cat .gitmodules | grep path | awk `{print $3}`)'
+alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
+alias gm1='cat .gitmodules | grep path -m1 | sed "s/path\ =\ //g"'
+alias gm2='cat .gitmodules | grep path | sed "1,1d" | sed "s/path\ =\ //g"'
+alias gm3='cat .gitmodules | grep path | sed "2,1d" | sed "s/path\ =\ //g"'
+alias gcdm1='cd $(gm1)'
+alias gcdm2='cd $(gm2)'
+alias gcdm3='cd $(gm3)'
 
 # Svn aliases
 alias ss='svn stat'
@@ -52,8 +58,8 @@ alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
 # SSH machines
-alias ssh-home='ssh spyder@82.103.77.45'
-alias ssh-office='ssh spyder@92.247.193.20'
+alias ssh-home='sshpass -p spyder ssh spyder@82.103.77.45'
+alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
 alias ssh_build='ssh unity@10.48.22.13'
 alias ssh_dev='ssh clicker@kinkoid01.hh'
 alias ssh_clicker='ssh clicker@web6-ams.srv.aur.be'
