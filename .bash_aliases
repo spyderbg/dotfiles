@@ -58,8 +58,8 @@ alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
 # SSH machines
-alias ssh-home='ssh spyder@82.103.77.45'
-alias ssh-office='ssh spyder@92.247.193.20'
+alias ssh-home='sshpass -p spyder ssh spyder@82.103.77.45'
+alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
 alias ssh_build='ssh unity@10.48.22.13'
 alias ssh_dev='ssh clicker@kinkoid01.hh'
 alias ssh_clicker='ssh clicker@web6-ams.srv.aur.be'
