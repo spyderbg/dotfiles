@@ -131,3 +131,6 @@ add mod4 = Super_L
  92.247.193.20
  ```
  
+ ## Git update index
+ git update-index --chmod=+x ./scripts/build.sh
+ 
