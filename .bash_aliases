@@ -106,6 +106,7 @@ alias _marx="cd ~/_Projects/MarXman/"
 alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
+alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
