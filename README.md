@@ -134,3 +134,11 @@ add mod4 = Super_L
  ## Git update index
  git update-index --chmod=+x ./scripts/build.sh
  
+ ## SSH add private key
+ ```
+ eval `ssh-agent`
+ ```
+ ```
+ ssh-add ~/.ssh/id_ed25519_tritan
+ ```
+ 
