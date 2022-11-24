@@ -142,3 +142,8 @@ add mod4 = Super_L
  ssh-add ~/.ssh/id_ed25519_tritan
  ```
  
+ ## Socket is forbidden
+ ```
+ net stop hns && net start hns
+ ```
+ 
