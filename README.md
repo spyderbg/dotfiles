@@ -147,3 +147,8 @@ add mod4 = Super_L
  net stop hns && net start hns
  ```
  
+ ## List disk space
+ ```
+ df -h | awk '{ printf "%8s %6s\n", $6, $4 }' | grep "\/mnt\/[s,t,u,v,w] "
+ ```
+ 
