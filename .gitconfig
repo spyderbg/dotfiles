@@ -1,5 +1,5 @@
 [user]
-	email = chernev@beastburst.com
+	email = plamen.chernev@marxmanstudio.com
 	name = Spyder
 [difftool "sourcetree"]
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"

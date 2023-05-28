@@ -91,6 +91,7 @@ alias ssh-110-plots='sshpass -p spyder ssh spyder@192.168.0.110 "ps -aux | grep 
 alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
 alias ssh-112='sshpass -p spyder ssh spyder@192.168.0.112'
 alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
+alias ssh-114='sshpass -p spyder ssh spyder@192.168.0.114'
 
 # Project paths
 alias _proj='cd ~/_Projects/'
@@ -107,6 +108,14 @@ alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
+alias _tmp='cd ~/_Projects/ToTheMoon/_template'
+alias _jet='cd ~/_Projects/ToTheMoon/jet-rider'
+alias _dark='cd ~/_Projects/ToTheMoon/dark-tower'
+alias _pond='cd ~/_Projects/ToTheMoon/drop-in-the-pond'
+alias _shop='cd ~/_Projects/ToTheMoon/ShopInventorySystem'
+alias _bat='cd ~/_Projects/ToTheMoon/battle-arena'
+alias _pock='cd ~/_Projects/ToTheMoon/pocket-trainer'
+
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
