@@ -182,3 +182,8 @@ netsh interface portproxy show v4tov4
 ```
 netsh int portproxy reset all
 ```
+
+## How to remove a single entry from known_hosts
+```
+ssh-keygen -f ~/.ssh/known_hosts -R 192.168.1.71
+```
