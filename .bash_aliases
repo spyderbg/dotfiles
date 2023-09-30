@@ -104,10 +104,13 @@ alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
+alias _marxa="cd ~/_Projects/MarXman/mx-assets"
 alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
+alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
+alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
 alias _tmp='cd ~/_Projects/ToTheMoon/_template'
 alias _jet='cd ~/_Projects/ToTheMoon/jet-rider'
 alias _dark='cd ~/_Projects/ToTheMoon/dark-tower'
@@ -133,6 +136,7 @@ alias sql_stop="sudo service mysql stop"
 alias sql_status="sudo service mysql status"
 alias sql_login="sudo mysql -u root -ppassword -P 3308"
 alias sql_dump="sudo mysqldump -u root -ppassword -P 3308 --lock-tables"
+alias sql_conn='mysql -h 82.103.77.45 -P 3306 -u admin -pspyder'
 
 # Ports
 alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN"
