@@ -58,20 +58,9 @@ alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
 # SSH machines
-alias ssh-home='sshpass -p spyder ssh spyder@82.103.77.45'
-alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
-alias ssh_build='ssh unity@10.48.22.13'
-alias ssh_dev='ssh clicker@kinkoid01.hh'
-alias ssh_clicker='ssh clicker@web6-ams.srv.aur.be'
-alias ssh_test='ssh clicker_test@web6-ams.srv.aur.be'
-alias ssh_prod='ssh clicker_prod@web6-ams.srv.aur.be'
-alias ssh_nutaku='ssh clicker_nutaku@web6-ams.srv.aur.be'
-alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
-alias ssh_date='ssh date@web6-ams.srv.aur.be'
-alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
-alias ssh_ptr='sshpass -p ptr@312 ssh ptr@5.79.84.53'
-alias ssh_ptr1='sshpass -p ptr@312 ssh ptr1@37.48.76.133'
-alias ssh-server='sshpass -p spyder ssh spyder@82.103.77.45'
+alias ssh-home='sshpass ssh spyder@82.103.77.45'
+alias ssh-office='sshpass ssh spyder@92.247.193.20'
+alias ssh-server='sshpass ssh spyder@82.103.77.45'
 alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
 alias ssh-103-plots='sshpass -p spyder ssh spyder@192.168.0.103 "ps -aux | grep \"chia plots\""'
 alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
