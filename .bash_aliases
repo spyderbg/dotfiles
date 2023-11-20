@@ -58,9 +58,8 @@ alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
 # SSH machines
-alias ssh-home='sshpass ssh spyder@82.103.77.45'
-alias ssh-office='sshpass ssh spyder@92.247.193.20'
-alias ssh-server='sshpass ssh spyder@82.103.77.45'
+alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
+alias ssh-server='sshpass -p spyder ssh spyder@82.103.77.45'
 alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
 alias ssh-103-plots='sshpass -p spyder ssh spyder@192.168.0.103 "ps -aux | grep \"chia plots\""'
 alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
@@ -81,6 +80,8 @@ alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
 alias ssh-112='sshpass -p spyder ssh spyder@192.168.0.112'
 alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 alias ssh-114='sshpass -p spyder ssh spyder@192.168.0.114'
+alias ssh-115='sshpass -p spyder ssh spyder@192.168.0.115'
+alias ssh-116='sshpass -p spyder ssh spyder@192.168.0.116'
 
 # Project paths
 alias _proj='cd ~/_Projects/'
