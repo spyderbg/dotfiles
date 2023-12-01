@@ -59,7 +59,7 @@ alias dexec="sudo docker exec -it"
 
 # SSH machines
 alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
-alias ssh-server='sshpass -p spyder ssh spyder@82.103.77.45'
+alias ssh-server='sshpass -p P@cko4386 ssh spyder@82.103.77.45'
 alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
 alias ssh-103-plots='sshpass -p spyder ssh spyder@192.168.0.103 "ps -aux | grep \"chia plots\""'
 alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
