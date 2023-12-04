@@ -182,6 +182,9 @@ netsh interface portproxy show v4tov4
 ```
 netsh int portproxy reset all
 ```
+```
+netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=22
+```
 
 ## How to remove a single entry from known_hosts
 ```
