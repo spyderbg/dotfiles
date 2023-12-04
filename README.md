@@ -171,7 +171,7 @@ ListenAddress 0.0.0.0
 service ssh start
 ```
 ```
-netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=172.23.129.80 connectport=2222
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=22 connectaddress=172.28.250.52 connectport=22
 ```
 ```
 netsh advfirewall firewall add rule name="Open Port 2222 for WSL2" dir=in action=allow protocol=TCP localport=2222
