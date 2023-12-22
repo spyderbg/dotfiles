@@ -111,6 +111,9 @@ keycode 37 = Super_L NoSymbol Super_L
 add control = Control_L
 add control = Control_R
 add mod4 = Super_L
+
+# keycode 9 = Caps_Lock NoSymbol Caps_Lock   #this will make Esc act as Caps Lock
+keycode 66 = Escape NoSymbol Escape        #this will make Caps Lock to act as Esc
 ```
 
 ```
