@@ -144,6 +144,9 @@ keycode 66 = Escape NoSymbol Escape        #this will make Caps Lock to act as E
  ```
  ssh-add ~/.ssh/id_ed25519_tritan
  ```
+ ```
+ ssh-add ~/.ssh/id_ed25519_cricket
+ ```
  
  ## Socket is forbidden
  ```
