@@ -196,3 +196,11 @@ netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=22
 ```
 ssh-keygen -f ~/.ssh/known_hosts -R 192.168.1.71
 ```
+
+## How to install libssl v1.0 on Ubuntu (fix Unity strange build issue) 
+```
+wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb
+wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0-dev_1.0.2n-1ubuntu5.13_amd64.deb
+sudo dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb 
+sudo dpkg -i libssl1.0-dev_1.0.2n-1ubuntu5.13_amd64.deb
+```
