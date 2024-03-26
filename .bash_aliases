@@ -11,6 +11,7 @@ alias ga="git add"
 alias gap="ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset"
 alias gp="git push"
 alias gpsub='git pull && git submodule update'
+alias gr='git restore --staged'
 alias gg="git status"
 alias ggs="git status -s | cut -c4-"
 alias gs="git stash"
@@ -34,6 +35,7 @@ alias glgt="clear && git lola -18"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
+alias gdelete='git push origin -d'
 alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
 alias gm1='cat .gitmodules | grep path -m1 | sed "s/path\ =\ //g"'
 alias gm2='cat .gitmodules | grep path | sed "1,1d" | sed "s/path\ =\ //g"'
@@ -89,27 +91,23 @@ alias _proj='cd ~/_Projects/'
 alias _temp='cd ~/_Projects/temp/'
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 alias _cpp='cd ~/_Projects/Cpp/'
+alias _dot='cd ~/_Projects/Dotnet/'
 alias _unity='cd /mnt/c/_Projects/Unity/'
 alias _soh="cd ~/_Projects/BeastBurst/soh-client/Assets/ScarsOfHonor/"
 alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
-alias _marxa="cd ~/_Projects/MarXman/mx-assets"
 alias _marxc="cd ~/_Projects/MarXman/mx-core"
+alias _marxa="cd ~/_Projects/MarXman/mx-assets"
+alias _marxw="cd ~/_Projects/MarXman/mx-site"
+alias _marxs="cd ~/_Projects/MarXman/mx-services"
 alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
-alias _tmp='cd ~/_Projects/ToTheMoon/_template'
-alias _jet='cd ~/_Projects/ToTheMoon/jet-rider'
-alias _dark='cd ~/_Projects/ToTheMoon/dark-tower'
-alias _pond='cd ~/_Projects/ToTheMoon/drop-in-the-pond'
-alias _shop='cd ~/_Projects/ToTheMoon/ShopInventorySystem'
-alias _bat='cd ~/_Projects/ToTheMoon/battle-arena'
-alias _pock='cd ~/_Projects/ToTheMoon/pocket-trainer'
 
 
 # PM2 commands
