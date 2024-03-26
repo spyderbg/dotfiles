@@ -8,6 +8,7 @@ alias xclip='xclip -sel clip'
 # Git aliases
 alias g="git"
 alias ga="git add"
+alias gap="ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset"
 alias gp="git push"
 alias gpsub='git pull && git submodule update'
 alias gg="git status"
@@ -95,6 +96,7 @@ alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
 alias _marxa="cd ~/_Projects/MarXman/mx-assets"
+alias _marxc="cd ~/_Projects/MarXman/mx-core"
 alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
