@@ -108,6 +108,8 @@ alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
+alias _cros='cd ~/_Projects/BlueCroco/platform-server'
+alias _crol='cd ~/_Projects/BlueCroco/nodejs-launcher'
 
 
 # PM2 commands
