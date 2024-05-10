@@ -110,7 +110,10 @@ alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
-
+alias _cros='cd ~/_Projects/BlueCroco/platform-server'
+alias _crol='cd ~/_Projects/BlueCroco/nodejs-launcher'
+alias _croc='cd ~/_Projects/BlueCroco/svara-client'
+alias _crob='cd ~/_Projects/BlueCroco/backoffice-client'
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
