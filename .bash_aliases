@@ -4,6 +4,8 @@ alias aliases="vim ~/.bash_aliases && reload_aliases"
 
 # Common aliases
 alias xclip='xclip -sel clip'
+alias xmod='xmodmap ~/.Xmodmap'
+alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 
 # Git aliases
 alias g="git"
@@ -149,7 +151,4 @@ alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
 alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
-
-# Ubuntu
-alias xmod='xmodmap ~/.Xmodmap'
 
