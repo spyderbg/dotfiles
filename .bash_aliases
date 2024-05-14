@@ -60,6 +60,11 @@ alias drestart="sudo dcoker restart"
 alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
+# dotnet aliases
+alias dotb='dotnet build --project'
+alias dotr='dotnet run --project'
+alias dotdbu='dotnet ef database update'
+
 # SSH machines
 alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
 alias ssh-server='sshpass -p P@cko4386 ssh spyder@82.103.77.45'
