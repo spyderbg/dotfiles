@@ -62,6 +62,11 @@ alias drestart="sudo dcoker restart"
 alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
+# dotnet aliases
+alias dotb='dotnet build --project'
+alias dotr='dotnet run --project'
+alias dotdbu='dotnet ef database update'
+
 # SSH machines
 alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
 alias ssh-server='sshpass -p P@cko4386 ssh spyder@82.103.77.45'
@@ -112,8 +117,7 @@ alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Eco
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
 alias _cros='cd ~/_Projects/BlueCroco/platform-server'
 alias _crol='cd ~/_Projects/BlueCroco/nodejs-launcher'
-alias _croc='cd ~/_Projects/BlueCroco/svara-client'
-alias _crob='cd ~/_Projects/BlueCroco/backoffice-client'
+
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
