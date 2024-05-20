@@ -206,3 +206,9 @@ sudo dpkg -i libssl1.0-dev_1.0.2n-1ubuntu5.13_amd64.deb
 ```
 
 78.83.65.31
+
+## Create a Postgres database with user and password
+```
+sudo docker run --name bluecroco-postgres -p 5432:5432 -e POSTGRES_USER=bluecroco -e POSTGRES_PASSWORD=password -d postgres:14.11
+```
+
