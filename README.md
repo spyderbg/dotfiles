@@ -111,6 +111,9 @@ keycode 37 = Super_L NoSymbol Super_L
 add control = Control_L
 add control = Control_R
 add mod4 = Super_L
+
+clear Lock
+keycode 66 = Escape NoSymbol Escape        #this will make Caps Lock to act as Esc
 ```
 
 ```
@@ -140,6 +143,9 @@ add mod4 = Super_L
  ```
  ```
  ssh-add ~/.ssh/id_ed25519_tritan
+ ```
+ ```
+ ssh-add ~/.ssh/id_ed25519_cricket
  ```
  
  ## Socket is forbidden
@@ -171,7 +177,7 @@ ListenAddress 0.0.0.0
 service ssh start
 ```
 ```
-netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=172.23.129.80 connectport=2222
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=22 connectaddress=172.28.250.52 connectport=22
 ```
 ```
 netsh advfirewall firewall add rule name="Open Port 2222 for WSL2" dir=in action=allow protocol=TCP localport=2222
@@ -182,8 +188,27 @@ netsh interface portproxy show v4tov4
 ```
 netsh int portproxy reset all
 ```
+```
+netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=22
+```
 
 ## How to remove a single entry from known_hosts
 ```
 ssh-keygen -f ~/.ssh/known_hosts -R 192.168.1.71
 ```
+
+## How to install libssl v1.0 on Ubuntu (fix Unity strange build issue) 
+```
+wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb
+wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0-dev_1.0.2n-1ubuntu5.13_amd64.deb
+sudo dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb 
+sudo dpkg -i libssl1.0-dev_1.0.2n-1ubuntu5.13_amd64.deb
+```
+
+78.83.65.31
+
+## Create a Postgres database with user and password
+```
+sudo docker run --name bluecroco-postgres -p 5432:5432 -e POSTGRES_USER=bluecroco -e POSTGRES_PASSWORD=password -d postgres:14.11
+```
+

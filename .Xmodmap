@@ -1,4 +1,5 @@
 clear control
+
 clear mod4
 
 keycode 105 = 
@@ -11,3 +12,6 @@ keycode 37 = Super_L NoSymbol Super_L
 add control = Control_L 
 add control = Control_R 
 add mod4 = Super_L
+
+clear Lock
+keycode 66 = Escape NoSymbol Escape 

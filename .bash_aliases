@@ -4,12 +4,16 @@ alias aliases="vim ~/.bash_aliases && reload_aliases"
 
 # Common aliases
 alias xclip='xclip -sel clip'
+alias xmod='xmodmap ~/.Xmodmap'
+alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 
 # Git aliases
 alias g="git"
 alias ga="git add"
+alias gap="ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset"
 alias gp="git push"
 alias gpsub='git pull && git submodule update'
+alias gr='git restore --staged'
 alias gg="git status"
 alias ggs="git status -s | cut -c4-"
 alias gs="git stash"
@@ -33,6 +37,7 @@ alias glgt="clear && git lola -18"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
+alias gdelete='git push origin -d'
 alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
 alias gm1='cat .gitmodules | grep path -m1 | sed "s/path\ =\ //g"'
 alias gm2='cat .gitmodules | grep path | sed "1,1d" | sed "s/path\ =\ //g"'
@@ -42,8 +47,8 @@ alias gcdm2='cd $(gm2)'
 alias gcdm3='cd $(gm3)'
 
 # Svn aliases
-alias ss='svn stat'
-alias sa='svn add'
+# alias ss='svn stat'
+# alias sa='svn add'
 
 # Docker aliases
 alias di="sudo docker image"
@@ -57,21 +62,14 @@ alias drestart="sudo dcoker restart"
 alias dpull="sudo docker pull"
 alias dexec="sudo docker exec -it"
 
+# dotnet aliases
+alias dotb='dotnet build --project'
+alias dotr='dotnet run --project'
+alias dotdbu='dotnet ef database update'
+
 # SSH machines
-alias ssh-home='sshpass -p spyder ssh spyder@82.103.77.45'
 alias ssh-office='sshpass -p spyder ssh spyder@92.247.193.20'
-alias ssh_build='ssh unity@10.48.22.13'
-alias ssh_dev='ssh clicker@kinkoid01.hh'
-alias ssh_clicker='ssh clicker@web6-ams.srv.aur.be'
-alias ssh_test='ssh clicker_test@web6-ams.srv.aur.be'
-alias ssh_prod='ssh clicker_prod@web6-ams.srv.aur.be'
-alias ssh_nutaku='ssh clicker_nutaku@web6-ams.srv.aur.be'
-alias ssh_sandbox='ssh clicker_nutaku_sandbox@web6-ams.srv.aur.be'
-alias ssh_date='ssh date@web6-ams.srv.aur.be'
-alias ssh_adm2='ssh supernova@adm2.srv.aur.be'
-alias ssh_ptr='sshpass -p ptr@312 ssh ptr@5.79.84.53'
-alias ssh_ptr1='sshpass -p ptr@312 ssh ptr1@37.48.76.133'
-alias ssh-server='sshpass -p spyder ssh spyder@82.103.77.45'
+alias ssh-server='sshpass -p P@cko4386 ssh spyder@82.103.77.45'
 alias ssh-103='sshpass -p spyder ssh spyder@192.168.0.103'
 alias ssh-103-plots='sshpass -p spyder ssh spyder@192.168.0.103 "ps -aux | grep \"chia plots\""'
 alias ssh-104='sshpass -p spyder ssh spyder@192.168.0.104'
@@ -92,33 +90,33 @@ alias ssh-111='sshpass -p spyder ssh spyder@192.168.0.111'
 alias ssh-112='sshpass -p spyder ssh spyder@192.168.0.112'
 alias ssh-113='sshpass -p spyder ssh spyder@192.168.0.113'
 alias ssh-114='sshpass -p spyder ssh spyder@192.168.0.114'
+alias ssh-115='sshpass -p spyder ssh spyder@192.168.0.115'
+alias ssh-116='sshpass -p spyder ssh spyder@192.168.0.116'
 
 # Project paths
 alias _proj='cd ~/_Projects/'
 alias _temp='cd ~/_Projects/temp/'
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 alias _cpp='cd ~/_Projects/Cpp/'
+alias _dot='cd ~/_Projects/Dotnet/'
 alias _unity='cd /mnt/c/_Projects/Unity/'
 alias _soh="cd ~/_Projects/BeastBurst/soh-client/Assets/ScarsOfHonor/"
 alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
+alias _marxc="cd ~/_Projects/MarXman/mx-core"
 alias _marxa="cd ~/_Projects/MarXman/mx-assets"
+alias _marxw="cd ~/_Projects/MarXman/mx-site"
+alias _marxs="cd ~/_Projects/MarXman/mx-services"
 alias _moon='cd ~/_Projects/Myria/myria-moonville'
 alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
-alias _cria='cd ~/.config/unity3d/Leapblock/Cricket/Accounts'
-alias _tmp='cd ~/_Projects/ToTheMoon/_template'
-alias _jet='cd ~/_Projects/ToTheMoon/jet-rider'
-alias _dark='cd ~/_Projects/ToTheMoon/dark-tower'
-alias _pond='cd ~/_Projects/ToTheMoon/drop-in-the-pond'
-alias _shop='cd ~/_Projects/ToTheMoon/ShopInventorySystem'
-alias _bat='cd ~/_Projects/ToTheMoon/battle-arena'
-alias _pock='cd ~/_Projects/ToTheMoon/pocket-trainer'
+alias _cros='cd ~/_Projects/BlueCroco/platform-server'
+alias _crol='cd ~/_Projects/BlueCroco/nodejs-launcher'
 
 
 # PM2 commands
@@ -160,7 +158,4 @@ alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
 alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
-
-# Ubuntu
-alias xmod='xmodmap ~/.Xmodmap'
 
