@@ -38,6 +38,7 @@ alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
 alias gdelete='git push origin -d'
+alias grmmerged='git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d' 
 alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
 alias gm1='cat .gitmodules | grep path -m1 | sed "s/path\ =\ //g"'
 alias gm2='cat .gitmodules | grep path | sed "1,1d" | sed "s/path\ =\ //g"'
@@ -47,13 +48,17 @@ alias gcdm2='cd $(gm2)'
 alias gcdm3='cd $(gm3)'
 
 # Svn aliases
-alias ss='svn stat'
-alias sa='svn add'
+# alias ss='svn stat'
+# alias sa='svn add'
 
 # Docker aliases
+#
 alias di="sudo docker image"
 alias dis="sudo docker images"
 alias dc="sudo docker container"
+alias dc-ls='sudo docker container ls --format="table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Image}}"'
+alias dn="sudo docker network"
+alias dcomp="sudo docker compose"
 alias db="sudo docker build"
 alias dps="sudo docker ps"
 alias drun="sudo docker run"
