@@ -211,4 +211,8 @@ sudo dpkg -i libssl1.0-dev_1.0.2n-1ubuntu5.13_amd64.deb
 ```
 sudo docker run --name bluecroco-postgres -p 5432:5432 -e POSTGRES_USER=bluecroco -e POSTGRES_PASSWORD=password -d postgres:14.11
 ```
+## Mining
+```
+bladebit simulate --power 600 --size 1PB -f 256
+```
 
