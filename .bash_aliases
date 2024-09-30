@@ -75,6 +75,7 @@ alias dotdbu='dotnet ef database update'
 # SSH machines
 alias ssh-office='sshpass -f office_psw ssh spyder@151.251.174.127'
 alias ssh-server='sshpass -f server_psw ssh spyder@82.103.77.45'
+alias ssh-50='sshpass -f password ssh spyder@192.168.50.50'
 alias ssh-101='sshpass -f password ssh spyder@192.168.50.101'
 alias ssh-101-plots='sshpass -f password ssh spyder@192.168.50.101 "ps -aux | grep \"chia plots\""'
 alias ssh-102='sshpass -f password ssh spyder@192.168.50.102'
