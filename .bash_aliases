@@ -54,6 +54,8 @@ alias gm3='cat .gitmodules | grep path | sed "2,1d" | sed "s/path\ =\ //g"'
 alias gcdm1='cd $(gm1)'
 alias gcdm2='cd $(gm2)'
 alias gcdm3='cd $(gm3)'
+alias ghash='git rev-parse --short HEAD'
+alias ghashx='git rev-parse --short HEAD | xclip'
 
 # Svn aliases
 # alias ss='svn stat'
