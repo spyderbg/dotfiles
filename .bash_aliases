@@ -1,4 +1,5 @@
 # Global aliases
+#
 alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
 
@@ -12,20 +13,26 @@ alias g="git"
 alias ga="git add"
 alias gap="ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset"
 alias gp="git push"
+alias gpn='git push --set-upstream origin'
+alias gpc='git push --set-upstream origin $(git branch --show-current)'
+alias gpf='git push --force-with-lease'
+alias gsup='git submodule update'
 alias gpsub='git pull && git submodule update'
 alias gr='git restore --staged'
 alias gg="git status"
 alias ggs="git status -s | cut -c4-"
-alias gs="git stash"
 alias gt="git tag"
 alias gb="git branch"
 alias gc="git checkout"
 alias gf="git fetch"
 alias gfa="git fetch --all"
 alias gfp="git fetch --prune"
+alias gs="git stash"
+alias gsl="git stash list"
 alias gsa="git stash apply"
 alias gsc="git stash clear"
-alias gsp="git stash pop"
+alias gsp="git stash push -m"
+alias gspop='git stash pop'
 alias gm="git commit"
 alias gma="git commit --amend"
 alias gd="git diff"
@@ -109,15 +116,14 @@ alias _marxc="cd ~/_Projects/MarXman/mx-core"
 alias _marxa="cd ~/_Projects/MarXman/mx-assets"
 alias _marxw="cd ~/_Projects/MarXman/mx-site"
 alias _marxs="cd ~/_Projects/MarXman/mx-services"
-alias _moon='cd ~/_Projects/Myria/myria-moonville'
-alias _drag='cd ~/_Projects/Playwing/Dragon4x'
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
-alias _cros='cd ~/_Projects/BlueCroco/platform-server'
-alias _crol='cd ~/_Projects/BlueCroco/nodejs-launcher'
 
+# EGT paths
+alias _games='cd ~/_Projects/Egt/games'
+alias _itl='cd ~/_Projects/Egt/italy_games'
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
