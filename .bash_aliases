@@ -38,9 +38,10 @@ alias gma="git commit --amend"
 alias gd="git diff"
 alias gds="git diff --chached"
 alias glp="git log -p -1"
+alias glone='git log --oneline'
 alias gl="clear && git graph --since=yesterday"
 alias glt="clear && git log --since=yesterday"
-alias glgt="clear && git lola -18"
+alias glgt="clear && git lola -25"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase develop"
 alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
@@ -68,6 +69,8 @@ alias dc="sudo docker container"
 alias dc-ls='sudo docker container ls --format="table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Image}}"'
 alias dn="sudo docker network"
 alias dcomp="sudo docker compose"
+alias dcompup="sudo docker compose up -d"
+alias dcompdown="sudo docker compose down"
 alias db="sudo docker build"
 alias dps="sudo docker ps"
 alias drun="sudo docker run"
@@ -167,4 +170,7 @@ alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
 alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
+
+# Kill commands
+alias killt='pgrep -f gnome-text-editor >/dev/null && pkill -15 -f gnome-text-editor >/dev/null 2>&1'
 
