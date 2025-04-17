@@ -118,6 +118,7 @@ alias _marxc="cd ~/_Projects/MarXman/mx-core"
 alias _marxa="cd ~/_Projects/MarXman/mx-assets"
 alias _marxw="cd ~/_Projects/MarXman/mx-site"
 alias _marxs="cd ~/_Projects/MarXman/mx-services"
+alias _marxk="cd ~/_Projects/MarXman/KiddoWords"
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
