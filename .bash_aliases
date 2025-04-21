@@ -44,7 +44,7 @@ alias glt="clear && git log --since=yesterday"
 alias glgt="clear && git lola -25"
 alias gspull="git stash && git pull && git stash apply"
 alias grebase="git rebase dev"
-alias grelease="git checkout master && git pull && git merge dev && git push && git checkout -"
+alias grelease="git checkout main && git pull && git merge dev && git push && git checkout -"
 alias gdelete='git push origin -d'
 alias grmmerged='git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d' 
 alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
