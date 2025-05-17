@@ -6,6 +6,7 @@
 .cache/
 .config/
 .dotnet/
+.docker/
 .gitignore
 .gitkraken/
 .gk/
@@ -22,8 +23,10 @@
 .vim
 .viminfo
 .vscode/
+.ServiceHub/
 Documents/
 Downloads/
+Desktop/
 _Projects/
 pCloudDrive/
 snap/
@@ -35,6 +38,7 @@ snap/
 .dotnet_bak/
 .gradle/
 .mono/
+.conda/
 .nv/
 .plastic4/
 .profile.bak
@@ -52,6 +56,8 @@ Pictures/
 Unity/
 Videos/
 dotnet/
+password
+server_psw
 enough_disk_space.sh
 hdd1.sh
 hdd2.sh
