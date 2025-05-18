@@ -1,3 +1,10 @@
+.aws
+.azure
+.docker/
+.grc/
+.motd_shown
+.mysql_history
+.vscode-server/
 .ssh/
 .anydesk/
 .aspnet/
@@ -46,6 +53,7 @@ snap/
 .thunderbird/
 .vim_local/
 .wget-hsts
+_Projects
 Android/
 Nextcloud/
 Pictures/
@@ -72,5 +80,6 @@ ssde2.sh
 ssde3.sh
 test.sh
 test_ssd_health.sh
+b12-aws-utilities-plamen.ppk
+dev-maria-db.sql
 
-no
