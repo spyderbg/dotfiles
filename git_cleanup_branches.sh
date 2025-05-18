@@ -12,6 +12,7 @@ while read -r branch; do
   remote_branch=$(echo $branch | awk '{print $2}')
 
   # Check if the remote branch exists
+  echo "Check remote branch: $remove_branch"
   if [ -z "$remote_branch" ]; then
     echo "Deleting local branch: $local_branch"
     git branch -d $local_branch
