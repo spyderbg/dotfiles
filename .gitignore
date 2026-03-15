@@ -57,6 +57,15 @@ snap/
 .thunderbird/
 .vim_local/
 .wget-hsts
+.cursor-server/
+.gemini/
+.python_history
+.tig_history
+.vscode-remote-containers/
+Egt/
+_Proj/
+ai_docs
+office_psw
 _Projects
 Android/
 Nextcloud/
