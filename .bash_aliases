@@ -1,5 +1,4 @@
 # Global aliases
-#
 alias reload_aliases="source ~/.bash_aliases"
 alias aliases="vim ~/.bash_aliases && reload_aliases"
 
@@ -7,6 +6,9 @@ alias aliases="vim ~/.bash_aliases && reload_aliases"
 alias xclip='xclip -sel clip'
 alias xmod='xmodmap ~/.Xmodmap'
 alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+
+# System aliases
+alias duc='du . -h -d 1'
 
 # Git aliases
 alias g="git"
@@ -63,7 +65,6 @@ alias ghashx='git rev-parse --short HEAD | xclip'
 # alias sa='svn add'
 
 # Docker aliases
-#
 alias di="sudo docker image"
 alias dis="sudo docker images"
 alias dc="sudo docker container"
