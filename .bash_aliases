@@ -7,36 +7,47 @@ alias xclip='xclip -sel clip'
 alias xmod='xmodmap ~/.Xmodmap'
 alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 
+# System aliases
+alias duc='du . -h -d 1'
+
 # Git aliases
 alias g="git"
 alias ga="git add"
 alias gap="ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset"
 alias gp="git push"
-alias gpsub='git pull && git submodule update'
+alias gpn='git push --set-upstream origin'
+alias gpc='git push --set-upstream origin $(git branch --show-current)'
+alias gpf='git push --force-with-lease'
+alias gpullrec='for dir in */; do (cd "$dir" && [ -d .git ] && echo && echo "Pulling in $dir" && git pull); done'
+alias gsup='git submodule update'
+alias gsubpull='git pull && git submodule update'
 alias gr='git restore --staged'
 alias gg="git status"
 alias ggs="git status -s | cut -c4-"
-alias gs="git stash"
 alias gt="git tag"
 alias gb="git branch"
 alias gc="git checkout"
 alias gf="git fetch"
 alias gfa="git fetch --all"
 alias gfp="git fetch --prune"
+alias gs="git stash"
+alias gsl="git stash list"
 alias gsa="git stash apply"
 alias gsc="git stash clear"
-alias gsp="git stash pop"
+alias gsp="git stash push -m"
+alias gspop='git stash pop'
 alias gm="git commit"
 alias gma="git commit --amend"
 alias gd="git diff"
 alias gds="git diff --chached"
 alias glp="git log -p -1"
+alias glone='git log --oneline'
 alias gl="clear && git graph --since=yesterday"
 alias glt="clear && git log --since=yesterday"
-alias glgt="clear && git lola -18"
+alias glgt="clear && git lola -25"
 alias gspull="git stash && git pull && git stash apply"
-alias grebase="git rebase develop"
-alias grelease="git checkout master && git pull && git merge develop && git push && git checkout -"
+alias grebase="git rebase dev"
+alias grelease="git checkout main && git pull && git merge dev && git push && git checkout -"
 alias gdelete='git push origin -d'
 alias grmmerged='git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d' 
 alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
@@ -46,19 +57,22 @@ alias gm3='cat .gitmodules | grep path | sed "2,1d" | sed "s/path\ =\ //g"'
 alias gcdm1='cd $(gm1)'
 alias gcdm2='cd $(gm2)'
 alias gcdm3='cd $(gm3)'
+alias ghash='git rev-parse --short HEAD'
+alias ghashx='git rev-parse --short HEAD | xclip'
 
 # Svn aliases
 # alias ss='svn stat'
 # alias sa='svn add'
 
 # Docker aliases
-#
 alias di="sudo docker image"
 alias dis="sudo docker images"
 alias dc="sudo docker container"
 alias dc-ls='sudo docker container ls --format="table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Image}}"'
 alias dn="sudo docker network"
 alias dcomp="sudo docker compose"
+alias dcompup="sudo docker compose up -d"
+alias dcompdown="sudo docker compose down"
 alias db="sudo docker build"
 alias dps="sudo docker ps"
 alias drun="sudo docker run"
@@ -75,6 +89,7 @@ alias dotdbu='dotnet ef database update'
 # SSH machines
 alias ssh-office='sshpass -f office_psw ssh spyder@151.251.174.127'
 alias ssh-server='sshpass -f server_psw ssh spyder@82.103.77.45'
+alias ssh-50='sshpass -f password ssh spyder@192.168.50.50'
 alias ssh-101='sshpass -f password ssh spyder@192.168.50.101'
 alias ssh-101-plots='sshpass -f password ssh spyder@192.168.50.101 "ps -aux | grep \"chia plots\""'
 alias ssh-102='sshpass -f password ssh spyder@192.168.50.102'
@@ -104,19 +119,20 @@ alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
 alias _marx="cd ~/_Projects/MarXman/"
+alias _marxb="cd ~/_Projects/MarXman/mx-build"
 alias _marxc="cd ~/_Projects/MarXman/mx-core"
 alias _marxa="cd ~/_Projects/MarXman/mx-assets"
 alias _marxw="cd ~/_Projects/MarXman/mx-site"
 alias _marxs="cd ~/_Projects/MarXman/mx-services"
-alias _moon='cd ~/_Projects/Myria/myria-moonville'
-alias _drag='cd ~/_Projects/Playwing/Dragon4x'
+alias _marxk="cd ~/_Projects/MarXman/KiddoWords"
 alias _iw='cd ~/_Projects/Playwing/InstantWar'
 alias _cri='cd ~/_Projects/TritanTechnology/Cricket'
 alias _crie='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Economy'
 alias _crip='cd ~/_Projects/TritanTechnology/Cricket/Assets/Editor/Resources/Proto'
-alias _cros='cd ~/_Projects/BlueCroco/platform-server'
-alias _crol='cd ~/_Projects/BlueCroco/nodejs-launcher'
 
+# EGT paths
+alias _games='cd ~/_Projects/Egt/games'
+alias _itl='cd ~/_Projects/Egt/italy_games'
 
 # PM2 commands
 alias pm2-loader="pm2 start /mnt/c/_Projects/clicker-server/content-loader/loader.js"
@@ -157,4 +173,7 @@ alias chia-num-plots='ps -aux | grep "chia plots" | wc -l'
 alias chia-list-plots='find /media/spyder -maxdepth 3 -iname "*.plot"'
 alias chia-list-num-plots='find /media/spyder -maxdepth 3 -iname "*.plot" | wc -l'
 alias chia-moving='while [[ ! -z "$(pidof mv)" ]]; do echo "Moving ..."; sleep 10; done'
+
+# Kill commands
+alias killt='pgrep -f gnome-text-editor >/dev/null && pkill -15 -f gnome-text-editor >/dev/null 2>&1'
 

@@ -42,3 +42,5 @@
 	required = true
 [http]
 	sslVerify = false
+[pull]
+	rebase = false
