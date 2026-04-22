@@ -6,15 +6,16 @@ alias aliases="vim ~/.bash_aliases && reload_aliases"
 alias xclip='xclip -sel clip'
 alias xmod='xmodmap ~/.Xmodmap'
 alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+alias src='source .venv/bin/activate'
 
 # System aliases
 alias duc='du . -h -d 1'
 
 # Git aliases
-alias g="git"
-alias ga="git add"
-alias gap="ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset"
-alias gp="git push"
+alias g='git'
+alias ga='git add'
+alias gap='ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset'
+alias gp='git push'
 alias gpn='git push --set-upstream origin'
 alias gpc='git push --set-upstream origin $(git branch --show-current)'
 alias gpf='git push --force-with-lease'
@@ -22,33 +23,47 @@ alias gpullrec='for dir in */; do (cd "$dir" && [ -d .git ] && echo && echo "Pul
 alias gsup='git submodule update'
 alias gsubpull='git pull && git submodule update'
 alias gr='git restore --staged'
-alias gg="git status"
-alias ggs="git status -s | cut -c4-"
-alias gt="git tag"
-alias gb="git branch"
-alias gc="git checkout"
-alias gf="git fetch"
-alias gfa="git fetch --all"
-alias gfp="git fetch --prune"
-alias gs="git stash"
-alias gsl="git stash list"
-alias gsa="git stash apply"
-alias gsc="git stash clear"
-alias gsp="git stash push -m"
+alias gg='git status'
+alias ggs='git status -s | cut -c4-'
+alias gt='git tag'
+alias gb='git branch'
+alias gc='git checkout'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias gfp='git fetch --prune'
+alias gs='git stash'
+alias gsl='git stash list'
+alias gsa='git stash apply'
+alias gsa0='git stash apply stash@{0}'
+alias gsa1='git stash apply stash@{1}'
+alias gsa2='git stash apply stash@{2}'
+alias gsa3='git stash apply stash@{3}'
+alias gsa4='git stash apply stash@{4}'
+alias gsa5='git stash apply stash@{5}'
+alias gsd0='git stash drop stash@{0}'
+alias gsd1='git stash drop stash@{1}'
+alias gsd2='git stash drop stash@{2}'
+alias gsd3='git stash drop stash@{3}'
+alias gsd4='git stash drop stash@{4}'
+alias gsd5='git stash drop stash@{5}'
+alias gsc='git stash clear'
+alias gsp='git stash push -m'
 alias gspop='git stash pop'
-alias gm="git commit"
-alias gma="git commit --amend"
-alias gd="git diff"
-alias gds="git diff --chached"
-alias glp="git log -p -1"
+alias gm='git commit'
+alias gma='git commit --amend'
+alias gmcode='git commit -am "Code refactoring" && git push'
+alias gd='git diff'
+alias gds='git diff --chached'
+alias glp='git log -p -1'
 alias glone='git log --oneline'
-alias gl="clear && git graph --since=yesterday"
-alias glt="clear && git log --since=yesterday"
-alias glgt="clear && git lola -25"
-alias gspull="git stash && git pull && git stash apply"
-alias grebase="git rebase dev"
-alias grelease="git checkout main && git pull && git merge dev && git push && git checkout -"
+alias gl='clear && git graph --since=yesterday'
+alias glt='clear && git log --since=yesterday'
+alias glgt='clear && git lola -25'
+alias gspull='git stash && git pull && git stash apply'
+alias grebase='git rebase dev'
+alias grelease='git checkout main && git pull && git merge dev && git push && git checkout -'
 alias gdelete='git push origin -d'
+alias gclean='git for-each-ref --format="%(refname:short) %(upstream:track)" refs/heads | awk '\''$2 == "[gone]" {print $1}'\'' | xargs -r git branch -D'
 alias grmmerged='git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d' 
 alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
 alias gm1='cat .gitmodules | grep path -m1 | sed "s/path\ =\ //g"'
@@ -83,8 +98,11 @@ alias dexec="sudo docker exec -it"
 
 # dotnet aliases
 alias dotb='dotnet build --project'
+alias dotbr='dotnet build -c Release'
 alias dotr='dotnet run --project'
 alias dotdbu='dotnet ef database update'
+alias puml='puml-gen ./ ./puml -dir -ignore Private,Protected --allInOne'
+
 
 # SSH machines
 alias ssh-office='sshpass -f office_psw ssh spyder@151.251.174.127'

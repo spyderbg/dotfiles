@@ -115,6 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+. "$HOME/.cargo/env"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/plamenchernev/.lmstudio/bin"
@@ -128,6 +129,67 @@ ssh-add ~/.ssh/id_ed25519 >&/dev/null;
 # zoxide
 eval "$(zoxide init bash)"
 
+# locale
+export LC_TIME=en_US.UTF-8
+
 # prompt 
-PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]
+PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] 
 \$ "
+
+
+# git functions
+git_stash_apply() {
+	git stash apply stash@{"$1"}
+}
+
+# Zoxide integration
+eval "$(zoxide init bash)"
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/plamen/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export GITLAB_API_ACCESS_TOKEN="glpat-5xRSEosdD-Nz-tvg-xHE"
+
+# opencode
+export PATH=/home/plamen/.opencode/bin:$PATH
+
+# ollama
+export OLLAMA_MODELS="/media/plamen/data1/.ollama"
+
+###-begin-opencode-completions-###
+#
+# yargs command completion script
+#
+# Installation: opencode completion >> ~/.bashrc
+#    or opencode completion >> ~/.bash_profile on OSX.
+#
+_opencode_yargs_completions()
+{
+    local cur_word args type_list
+
+    cur_word="${COMP_WORDS[COMP_CWORD]}"
+    args=("${COMP_WORDS[@]}")
+
+    # ask yargs to generate completions.
+    # see https://stackoverflow.com/a/40944195/7080036 for the spaces-handling awk
+    mapfile -t type_list < <(opencode --get-yargs-completions "${args[@]}")
+    mapfile -t COMPREPLY < <(compgen -W "$( printf '%q ' "${type_list[@]}" )" -- "${cur_word}" |
+        awk '/ / { print "\""$0"\"" } /^[^ ]+$/ { print $0 }')
+
+    # if no match was found, fall back to filename completion
+    if [ ${#COMPREPLY[@]} -eq 0 ]; then
+      COMPREPLY=()
+    fi
+
+    return 0
+}
+complete -o bashdefault -o default -F _opencode_yargs_completions opencode
+###-end-opencode-completions-###
+

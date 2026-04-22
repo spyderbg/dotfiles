@@ -1,6 +1,6 @@
 [user]
-	email = plamen.chernev@marxmanstudio.com
-	name = Spyder
+	email = plamen.chernev@egt.com
+	name = Plamen Chernev
 [difftool "sourcetree"]
 	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -32,7 +32,7 @@
 [color]
 	ui = true
 [core]
-	autocrlf = false
+	autocrlf = input
 	excludesFile = /home/spyder/.gitignore_global
 	editor = vim
 [filter "lfs"]

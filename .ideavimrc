@@ -1,2 +1,24 @@
 source ~/.vim/_gvimrc
 source ~/.vim/_ideavimrc
+source ~/.vim/_vim_func.vim
+
+function! IsThisFive(number)
+    if a:number == 5
+        return "This is five test"
+    else
+        return "This is not five second test"
+    endif
+endfunction
+
+
+
+xnoremap <F4> :<C-u>action me.laria.code.idea_caseconv.SnakeCaseAction<CR>:noh<CR>
+"nnoremap <F4> :call PrintCurrentAndNext()<CR>
+"nnoremap <F4> :call PascalToSnake()<CR>
+"nnoremap <F4> :echo IsThisFive(6)<CR>
+"nnoremap <F4> :printf('word under cursor: ')<CR>
+"nnoremap <F4> :echo 'test' <bar> :echo 'spyder'<CR>
+"nnoremap <F4> :w <bar> :source ~/.ideavimrc <bar> :echo 'adsafsadsaaaaaaaaaaa'<CR>
+
+"nnoremap <F5> :source ~/.ideavimrc<CR>
+nnoremap <F5> :w <bar> :source ~/.ideavimrc<CR>
