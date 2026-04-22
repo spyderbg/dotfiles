@@ -220,3 +220,11 @@ bladebit simulate --power 600 --size 1PB -f 256
 bladebit simulate --power 600 --size 1PB -f 256 <path to plot file>
 ```
 
+## Bash command line 
+File: $HOME/.bashrc_custom
+THIS FILE IS A USER-CUSTOM BASHRC FILE TO KEEP CLEAN THE DEFAULT ~/.barshrc FILE.
+PUT THERE ANY CUSTOM CODE MANUALLY ADDED BY YOU
+Add a new line at the end of the command prompt
+#PS1=${PS1}\\n
+PS1=${PS1%?}
+PS1=${PS1%?}\n'$ '
