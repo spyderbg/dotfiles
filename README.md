@@ -16,7 +16,8 @@ vimfiles - Copy
 vimfiles_local
 vimfiles_old
 vmlogs
-
+.
+95 
 source $HOME/vimfiles/_gvimrc
 
 source $HOME/vimfiles/_vimrc
@@ -224,7 +225,9 @@ bladebit simulate --power 600 --size 1PB -f 256 <path to plot file>
 File: $HOME/.bashrc_custom
 THIS FILE IS A USER-CUSTOM BASHRC FILE TO KEEP CLEAN THE DEFAULT ~/.barshrc FILE.
 PUT THERE ANY CUSTOM CODE MANUALLY ADDED BY YOU
-Add a new line at the end of the command prompt
+```
+# Add a new line at the end of the command prompt
 #PS1=${PS1}\\n
 PS1=${PS1%?}
 PS1=${PS1%?}\n'$ '
+```
