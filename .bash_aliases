@@ -7,6 +7,8 @@ alias xclip='xclip -sel clip'
 alias xmod='xmodmap ~/.Xmodmap'
 alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias src='source .venv/bin/activate'
+alias run='opencode run'
+alias rg='rg -i'
 alias pp='cd "$(pwd -P)"'
 
 # System aliases
