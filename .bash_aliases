@@ -9,6 +9,7 @@ alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias src='source .venv/bin/activate'
 alias run='opencode run'
 alias rg='rg -i'
+alias pp='cd "$(pwd -P)"'
 
 # System aliases
 alias duc='du . -h -d 1'
@@ -128,8 +129,8 @@ alias ssh-108='sshpass -f password ssh spyder@192.168.50.108'
 alias ssh-108-plots='sshpass -f password ssh spyder@192.168.50.108 "ps -aux | grep \"chia plots\""'
 
 # Project paths
-alias _proj='cd ~/_Projects/'
-alias _temp='cd ~/_Projects/temp/'
+alias _proj='cd ~/_Projects/ && "$(pwd -P)"'
+alias _temp='cd ~/_Projects/temp/ && pp'
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 alias _cpp='cd ~/_Projects/Cpp/'
 alias _dot='cd ~/_Projects/Dotnet/'
@@ -138,7 +139,7 @@ alias _soh="cd ~/_Projects/BeastBurst/soh-client/Assets/ScarsOfHonor/"
 alias _sohc="cd ~/_Projects/BeastBurst/soh-client/"
 alias _sohs="cd ~/_Projects/BeastBurst/soh-server/"
 alias _sohf="cd ~/_Projects/BeastBurst/soh-flatbuffers/"
-alias _marx="cd ~/_Projects/MarXman/"
+alias _marx="cd ~/_Projects/MarXman/ && pp"
 alias _marxb="cd ~/_Projects/MarXman/mx-build"
 alias _marxc="cd ~/_Projects/MarXman/mx-core"
 alias _marxa="cd ~/_Projects/MarXman/mx-assets"
