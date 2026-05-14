@@ -191,3 +191,14 @@ _opencode_yargs_completions()
 complete -o bashdefault -o default -F _opencode_yargs_completions opencode
 ###-end-opencode-completions-###
 
+
+# Added by Hugging Face CLI installer
+export PATH="/home/spyder/.local/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/spyder/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# opencode
+export PATH=/home/spyder/.opencode/bin:$PATH

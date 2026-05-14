@@ -44,3 +44,9 @@
 	sslVerify = false
 [pull]
 	rebase = false
+[lfs]
+	concurrenttransfers = 3
+[lfs "customtransfer.xet"]
+	path = git-xet
+	args = transfer
+	concurrent = true
