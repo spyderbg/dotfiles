@@ -129,7 +129,7 @@ alias ssh-108='sshpass -f password ssh spyder@192.168.50.108'
 alias ssh-108-plots='sshpass -f password ssh spyder@192.168.50.108 "ps -aux | grep \"chia plots\""'
 
 # Project paths
-alias _proj='cd ~/_Projects/ && "$(pwd -P)"'
+alias _proj='cd ~/_Projects/ && cd "$(pwd -P)"'
 alias _temp='cd ~/_Projects/temp/ && pp'
 alias _mon="cd /mnt/c/_Projects/Unity/MonsterSmash/"
 alias _cpp='cd ~/_Projects/Cpp/'
