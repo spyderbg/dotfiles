@@ -5,10 +5,10 @@
 
 
 !.Xmodmap
+!.bashrc
 !.bash_aliases
-!.bashrc
-!.bashrc
-!.bashrc
+!.zshrc
+!.zsh_aliases
 !.git_local_config
 !.gitconfig
 !.gitignore

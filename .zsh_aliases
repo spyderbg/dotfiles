@@ -1,0 +1,35 @@
+## eval "$(~/.local/bin/agent shell-integration zsh)"
+#
+#
+# Global aliases                                                                                                                  
+alias reload_aliases="source ~/.zsh_aliases"                                                                           
+alias aliases="vim ~/.zsh_aliases && reload_aliases"                                                                   
+                                                                                                                        
+# Common aliases                                                                                                        
+alias xclip='xclip -sel clip'                                                                                           
+alias xmod='xmodmap ~/.Xmodmap'                                                                                         
+alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+alias zsrc='source ~/.zshrc'                                                   
+alias src='source .venv/bin/activate'                                                                                   
+alias run='opencode run'                                                                                                
+alias rg='rg -i'                                                                                                        
+alias pp='cd "$(pwd -P)"'                                                                                               
+                                                                                                                        
+# System aliases                                                                                                        
+alias duc='du . -h -d 1'
+
+# Git aliases
+alias gg='git status'
+alias gsa0='git stash apply stash@{0}'
+alias gsa1='git stash apply stash@{1}'
+alias gsa2='git stash apply stash@{2}'
+alias gsa3='git stash apply stash@{3}'
+alias gsa4='git stash apply stash@{4}'
+alias gsa5='git stash apply stash@{5}'
+alias gsd0='git stash drop stash@{0}'
+alias gsd1='git stash drop stash@{1}'
+alias gsd2='git stash drop stash@{2}'
+alias gsd3='git stash drop stash@{3}'
+alias gsd4='git stash drop stash@{4}'
+alias gsd5='git stash drop stash@{5}'
+
