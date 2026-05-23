@@ -10,16 +10,77 @@ alias xclip='xclip -sel clip'
 alias xmod='xmodmap ~/.Xmodmap'                                                                                         
 alias xtee='echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias zsrc='source ~/.zshrc'                                                   
-alias src='source .venv/bin/activate'                                                                                   
-alias run='opencode run'                                                                                                
+alias src='source .venv/bin/activate'                                                                                                                                                                                
 alias rg='rg -i'                                                                                                        
 alias pp='cd "$(pwd -P)"'                                                                                               
                                                                                                                         
 # System aliases                                                                                                        
 alias duc='du . -h -d 1'
 
-# Git aliases
+# Kill commands
+alias killt='pgrep -f gnome-text-editor >/dev/null && pkill -15 -f gnome-text-editor >/dev/null 2>&1'
+
+# exa aliases (list commands)
+if which 'exa' &> /dev/null; then
+
+alias l='exa -G --icons'
+
+fi
+
+# SSH machines
+alias ssh-office='sshpass -f office_psw ssh spyder@151.251.174.127'
+alias ssh-server='sshpass -f server_psw ssh spyder@82.103.77.45'
+alias ssh-50='sshpass -f password ssh spyder@192.168.50.50'
+alias ssh-101='sshpass -f password ssh spyder@192.168.50.101'
+alias ssh-101-plots='sshpass -f password ssh spyder@192.168.50.101 "ps -aux | grep \"chia plots\""'
+alias ssh-102='sshpass -f password ssh spyder@192.168.50.102'
+alias ssh-102-plots='sshpass -f password ssh spyder@192.168.50.102 "ps -aux | grep \"chia plots\""'
+alias ssh-103='sshpass -f password ssh spyder@192.168.50.103'
+alias ssh-103-plots='sshpass -f password ssh spyder@192.168.50.103 "ps -aux | grep \"chia plots\""'
+alias ssh-104='sshpass -f password ssh spyder@192.168.50.104'
+alias ssh-104-plots='sshpass -f password ssh spyder@192.168.50.104 "ps -aux | grep \"chia plots\""'
+alias ssh-105='sshpass -f password ssh spyder@192.168.50.105'
+alias ssh-105-plots='sshpass -f password ssh spyder@192.168.50.105 "ps -aux | grep \"chia plots\""'
+alias ssh-106='sshpass -f password ssh spyder@192.168.50.106'
+alias ssh-106-plots='sshpass -f password ssh spyder@192.168.50.106 "ps -aux | grep \"chia plots\""'
+alias ssh-107='sshpass -f password ssh spyder@192.168.50.107'
+alias ssh-107-plots='sshpass -f password ssh spyder@192.168.50.107 "ps -aux | grep \"chia plots\""'
+alias ssh-108='sshpass -f password ssh spyder@192.168.50.108'
+alias ssh-108-plots='sshpass -f password ssh spyder@192.168.50.108 "ps -aux | grep \"chia plots\""'
+
+# opencode aliases
+alias run='opencode run'
+
+# Gti common aliases
 alias gg='git status'
+
+# Gti checkout aliases
+unalias gcb
+alias gcob='git checkout -b'
+unalias gcB
+alias gcoB='git checkout -B'
+unalias gcd
+alias gcod='git checkout $(git_develop_branch)'
+unalias gcm
+alias gcom='git checkout $(git_main_branch)'
+
+# Gti commit aliases
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gca='git commit --amend'
+alias gccode='git commit -am "Code refactoring" && git push'
+
+# Gti log aliases
+alias glp='git log -p -1'
+alias glone='git log --oneline'
+alias gl='clear && git graph --since=yesterday'
+alias glt='clear && git log --since=yesterday'
+alias glgt='clear && git lola -25'
+
+# Git stash aliases
+alias gs='git stash'
+alias gsl='git stash list'
+alias gsa='git stash apply'
 alias gsa0='git stash apply stash@{0}'
 alias gsa1='git stash apply stash@{1}'
 alias gsa2='git stash apply stash@{2}'
@@ -32,4 +93,3 @@ alias gsd2='git stash drop stash@{2}'
 alias gsd3='git stash drop stash@{3}'
 alias gsd4='git stash drop stash@{4}'
 alias gsd5='git stash drop stash@{5}'
-

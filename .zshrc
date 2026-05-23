@@ -85,6 +85,7 @@ VSCODE=code
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
+	docker
     command-not-found
     zsh-autosuggestions
     zsh-syntax-highlighting
