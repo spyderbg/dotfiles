@@ -202,3 +202,8 @@ export PATH="$PATH:/home/spyder/.lmstudio/bin"
 
 # opencode
 export PATH=/home/spyder/.opencode/bin:$PATH
+
+# cuda
+export PATH=/usr/local/cuda-12.5/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH
+
