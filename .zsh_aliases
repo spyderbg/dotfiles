@@ -21,9 +21,12 @@ alias duc='du . -h -d 1'
 alias killt='pgrep -f gnome-text-editor >/dev/null && pkill -15 -f gnome-text-editor >/dev/null 2>&1'
 
 # exa aliases (list commands)
-if which 'exa' &> /dev/null; then
+if which 'eza' &> /dev/null; then
 
-alias l='exa -G --icons'
+alias l='eza --icons --group-directories-first'
+alias ll='eza -l --git --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
+alias lla='eza -al --git --icons --group-directories-first'
 
 fi
 
