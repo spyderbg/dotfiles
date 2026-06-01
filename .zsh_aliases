@@ -21,9 +21,12 @@ alias duc='du . -h -d 1'
 alias killt='pgrep -f gnome-text-editor >/dev/null && pkill -15 -f gnome-text-editor >/dev/null 2>&1'
 
 # exa aliases (list commands)
-if which 'exa' &> /dev/null; then
+if which 'eza' &> /dev/null; then
 
-alias l='exa -G --icons'
+alias l='eza --icons --group-directories-first'
+alias ll='eza -l --git --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
+alias lla='eza -al --git --icons --group-directories-first'
 
 fi
 
@@ -51,10 +54,10 @@ alias ssh-108-plots='sshpass -f password ssh spyder@192.168.50.108 "ps -aux | gr
 # opencode aliases
 alias run='opencode run'
 
-# Gti common aliases
+# Git common aliases
 alias gg='git status'
 
-# Gti checkout aliases
+# Git checkout aliases
 unalias gcb
 alias gcob='git checkout -b'
 unalias gcB
@@ -64,7 +67,7 @@ alias gcod='git checkout $(git_develop_branch)'
 unalias gcm
 alias gcom='git checkout $(git_main_branch)'
 
-# Gti commit aliases
+# Git commit aliases
 alias gc='git commit'
 alias gcm='git commit --message'
 alias gca='git commit --amend'
@@ -93,3 +96,6 @@ alias gsd2='git stash drop stash@{2}'
 alias gsd3='git stash drop stash@{3}'
 alias gsd4='git stash drop stash@{4}'
 alias gsd5='git stash drop stash@{5}'
+
+# Run commands
+alias run_commit='run "Add all changes, create proper and concise commit message and commit the changes"'
