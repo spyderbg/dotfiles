@@ -202,3 +202,6 @@ export PATH="$PATH:/home/spyder/.lmstudio/bin"
 
 # opencode
 export PATH=/home/spyder/.opencode/bin:$PATH
+
+# NPM global bin (added by Qwen Code installer)
+export PATH="$HOME/.npm-global/bin:$PATH"
