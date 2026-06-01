@@ -54,10 +54,10 @@ alias ssh-108-plots='sshpass -f password ssh spyder@192.168.50.108 "ps -aux | gr
 # opencode aliases
 alias run='opencode run'
 
-# Gti common aliases
+# Git common aliases
 alias gg='git status'
 
-# Gti checkout aliases
+# Git checkout aliases
 unalias gcb
 alias gcob='git checkout -b'
 unalias gcB
@@ -67,7 +67,7 @@ alias gcod='git checkout $(git_develop_branch)'
 unalias gcm
 alias gcom='git checkout $(git_main_branch)'
 
-# Gti commit aliases
+# Git commit aliases
 alias gc='git commit'
 alias gcm='git commit --message'
 alias gca='git commit --amend'
@@ -96,3 +96,6 @@ alias gsd2='git stash drop stash@{2}'
 alias gsd3='git stash drop stash@{3}'
 alias gsd4='git stash drop stash@{4}'
 alias gsd5='git stash drop stash@{5}'
+
+# Run commands
+alias run_commit='run "Add all changes, create proper and concise commit message and commit the changes"'
