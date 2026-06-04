@@ -145,7 +145,7 @@ export PATH="$PATH:/home/plamen/.lmstudio/bin"
 
 
 # opencode ################################################
-export PATH=/home/plamen/.opencode/bin:$PATH
+export PATH=~/.opencode/bin:$PATH
 
 ###-begin-opencode-completions-###
 #
@@ -176,3 +176,4 @@ _opencode_yargs_completions()
 }
 complete -o bashdefault -o default -F _opencode_yargs_completions opencode
 ###-end-opencode-completions-###
+
