@@ -140,6 +140,12 @@ fi
 eval "$(zoxide init zsh)"
 
 
+# Set up fzf key bindings and fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source <(fzf --zsh)
+
+
 # Added by LM Studio CLI tool (lms) #######################
 export PATH="$PATH:/home/plamen/.lmstudio/bin"
 

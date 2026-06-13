@@ -20,6 +20,9 @@ alias duc='du . -h -d 1'
 # Kill commands
 alias killt='pgrep -f gnome-text-editor >/dev/null && pkill -15 -f gnome-text-editor >/dev/null 2>&1'
 
+# fzf commands 
+alias fzfp="fzf --style full --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'"
+
 # exa aliases (list commands)
 if which 'eza' &> /dev/null; then
 
@@ -72,6 +75,9 @@ alias gc='git commit'
 alias gcm='git commit --message'
 alias gca='git commit --amend'
 alias gccode='git commit -am "Code refactoring" && git push'
+
+# Git rebase aliases
+alias grbim='git rebase --interactive $(git_main_branch)'
 
 # Gti log aliases
 alias glp='git log -p -1'
