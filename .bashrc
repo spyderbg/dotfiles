@@ -207,3 +207,5 @@ export PATH=/home/spyder/.opencode/bin:$PATH
 export PATH=/usr/local/cuda-12.5/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
