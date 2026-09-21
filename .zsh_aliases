@@ -111,5 +111,11 @@ alias gstd3='git stash drop stash@{3}'
 alias gstd4='git stash drop stash@{4}'
 alias gstd5='git stash drop stash@{5}'
 
+# Git special aliases
+alias grelease='git checkout main && git pull && git merge dev && git push && git checkout -'
+alias gdelete='git push origin -d'
+
 # Run commands
-alias run_commit='run "Add all changes, create proper and concise commit message and commit the changes"'
+# alias run_commit='run "Add all changes, create proper and concise commit message and commit the changes"'
+alias run_commit='run "/commit "'
+
