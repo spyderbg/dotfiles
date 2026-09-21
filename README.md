@@ -8,6 +8,16 @@ source .bashrc
 ```
 
 
+```
+git clone --filter=blob:none --no-checkout --sparse git@github.com:spyderbg/dotfiles.git tmp && \
+git -C tmp sparse-checkout set --no-cone '/*' '!other/' && \
+git -C tmp checkout && \
+command mv -i -- tmp/*(D) . && \
+rmdir tmp && \
+source ~/.zshrc
+```
+
+
 ## Windows vimfiles
 vimfiles [P:\Vim]
 ``mklink /D vimfiles P:\Vim``
