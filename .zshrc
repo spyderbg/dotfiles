@@ -189,3 +189,10 @@ _opencode_yargs_completions()
 complete -o bashdefault -o default -F _opencode_yargs_completions opencode
 ###-end-opencode-completions-###
 
+
+# Qwen Code PATH block begin
+export PATH='/home/spyder/.local/bin':$PATH
+# Qwen Code PATH block end
+
+# kilo
+export PATH=/home/spyder/.kilo/bin:$PATH
