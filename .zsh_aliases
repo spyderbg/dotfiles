@@ -113,6 +113,7 @@ alias gstd3='git stash drop stash@{3}'
 alias gstd4='git stash drop stash@{4}'
 alias gstd5='git stash drop stash@{5}'
 
-# Git release aliases
-alias grelease='git checkout $(git_main_branch) && git pull && git merge $(git_develop_branch) && git push && git checkout -' 
+# Git special aliases
+alias grelease='git checkout main && git pull && git merge dev && git push && git checkout -'
+alias gdelete='git push origin -d'
 
