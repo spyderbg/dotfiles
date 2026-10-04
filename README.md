@@ -1,10 +1,24 @@
 # Clone dotfiles
 
 ```
+curl -fsSL https://raw.githubusercontent.com/spyderbg/dotfiles/main/install.sh | bash
+```
+
+```
 git clone git@github.com:spyderbg/dotfiles.git tmp && \ 
 for f in $(\ls -A ./tmp); do mv "./tmp/$f" "./$f"; done && \
 rmdir tmp && \
 source .bashrc
+```
+
+
+```
+git clone --filter=blob:none --no-checkout --sparse git@github.com:spyderbg/dotfiles.git tmp && \
+git -C tmp sparse-checkout set --no-cone '/*' '!other/' && \
+git -C tmp checkout && \
+command mv -i -- tmp/*(D) . && \
+rmdir tmp && \
+source ~/.zshrc
 ```
 
 
