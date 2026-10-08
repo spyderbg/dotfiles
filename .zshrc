@@ -161,6 +161,9 @@ export NVM_DIR="$HOME/.nvm"
 # kilo
 export PATH=~/.kilo/bin:$PATH
 
+# cline
+export PATH=~/.npm-global/bin:$PATH
+
 
 # opencode ################################################
 export PATH=~/.opencode/bin:$PATH

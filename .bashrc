@@ -203,9 +203,13 @@ export PATH="$PATH:/home/spyder/.lmstudio/bin"
 # opencode
 export PATH=/home/spyder/.opencode/bin:$PATH
 
+# NPM global bin (added by Qwen Code installer)
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 # cuda
 export PATH=/usr/local/cuda-12.5/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.5/lib64:$LD_LIBRARY_PATH
 
 
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
