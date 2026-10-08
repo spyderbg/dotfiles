@@ -1,0 +1,610 @@
+## eval "$(~/.local/bin/agent shell-integration zsh)"
+#
+#
+# Global commands
+alias reload_commands="source ~/.zsh_commands"
+alias commands="vim ~/.zsh_commands && reload_commands"
+
+
+# ==============================================================================
+# Custom shell commands
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# External tools used by the commands below (Ubuntu / Debian)
+# Copy-paste the lines under each heading into a terminal (drop the leading "# ").
+# ------------------------------------------------------------------------------
+#
+# Core: jq (all j* commands), git (crun_commit); find/grep/awk/sed/diff come with Ubuntu
+#   sudo apt update && sudo apt install -y jq git
+#
+# Claude Code CLI (all crun_* commands); run `claude` once afterwards to log in
+#   curl -fsSL https://claude.ai/install.sh | bash
+#
+# fzf (mdopen). The apt version is too old, so install from the git repo instead.
+# The installer downloads a prebuilt binary, so Go is not needed. It asks about shell
+# key bindings and completion; add --all after ~/.fzf/install to answer yes to everything.
+#   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+# Upgrade an existing ~/.fzf install later (binary only, shell config untouched)
+#   cd ~/.fzf && git pull && ./install --bin
+# Or build it from source: needs Go 1.23+, newer than Ubuntu's apt package, so use the snap
+#   sudo snap install go --classic
+#   cd ~/.fzf && git pull && make install
+#
+# bat (mdopen preview). Ubuntu installs the binary as "batcat", so add a "bat" symlink
+#   sudo apt install -y bat
+#   mkdir -p ~/.local/bin && ln -sf /usr/bin/batcat ~/.local/bin/bat
+#
+# glow (optional, renders markdown in the mdopen preview; used instead of bat if present)
+#   sudo mkdir -p /etc/apt/keyrings
+#   curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+#   echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+#   sudo apt update && sudo apt install -y glow
+#
+# pandoc (mdpdf: docx and html output)
+#   sudo apt install -y pandoc
+#
+# LaTeX (mdpdf: pdf output only; large download, roughly 600 MB)
+#   sudo apt install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended lmodern
+#
+# XeLaTeX (optional, needed for non-Latin text such as Bulgarian; mdpdf uses it when present)
+#   sudo apt install -y texlive-xetex fonts-dejavu
+#
+# Check what is installed
+#   for t in claude jq git fzf bat glow pandoc pdflatex xelatex; do printf '%-9s %s\n' $t "$(command -v $t || echo MISSING)"; done
+
+
+# ------------------------------------------------------------------------------
+# Opencode
+# ------------------------------------------------------------------------------
+
+# Drop the old aliases of the same names if this shell still has them loaded,
+# otherwise zsh refuses to define the functions below
+unalias run run_commit 2> /dev/null
+
+# Run a one-shot prompt with Opencode: run "prompt"
+run() {
+  opencode run "$@"
+}
+
+# Stage all changes, write a concise commit message and commit (uses the /commit command)
+run_commit() {
+  opencode run "/commit $*"
+}
+
+
+
+# ------------------------------------------------------------------------------
+# Claude Code
+# ------------------------------------------------------------------------------
+
+# Run a one-shot prompt with Claude Sonnet, auto-accepting file edits
+crun() {
+  claude -p "$@" \
+    --model claude-sonnet-5-5 \
+    --effort medium \
+    --permission-mode acceptEdits
+}
+
+# Read-only variant of crun: edits are denied, pipe context in via stdin
+crun_ro() {
+  claude -p "$@" \
+    --model claude-sonnet-5-5 \
+    --effort medium \
+    --disallowedTools "Edit Write NotebookEdit"
+}
+
+# Run crun with an instruction on each file (backend of the crun_* edit commands)
+#   _crun_each <command-name> <instruction> [-n|--dry] <file>...
+# @MTIME@ in the instruction expands to the file's modification date (YYYY-MM-DD).
+# --dry works on a temp copy and prints a diff instead of touching the real file.
+_crun_each() {
+  local cmd=$1 instruction=$2 dry=0
+  shift 2
+  if [[ $1 == -n || $1 == --dry ]]; then
+    dry=1
+    shift
+  fi
+  if (( $# == 0 )); then
+    echo "Usage: $cmd [-n|--dry] <file> [file ...]" >&2
+    return 1
+  fi
+
+  local file abs work prompt out g rc=0
+  for file in "$@"; do
+    if [[ ! -f $file ]]; then
+      echo "Skipping '$file': not a file" >&2
+      rc=1
+      continue
+    fi
+
+    abs=${file:A}
+    prompt=${instruction//@MTIME@/$(date -r "$file" +%F)}
+
+    if (( dry )); then
+      work=$(mktemp -d) || return 1
+      cp -- "$file" "$work/${abs:t}"
+      out=$(crun "$prompt File: $work/${abs:t}" --add-dir "$work" < /dev/null) || rc=1
+      printf '%s (dry run): %s\n%s\n' "$cmd" "$abs" "$out"
+      for g in "$work"/*(N.); do
+        if [[ ${g:t} == ${abs:t} ]]; then
+          diff -u --color=auto --label "$abs" --label "$abs (proposed)" "$abs" "$g" \
+            || true
+          cmp -s "$abs" "$g" && echo "(no changes)"
+        else
+          diff -u --color=auto --label /dev/null --label "${g:t} (new file)" /dev/null "$g" \
+            || true
+        fi
+      done
+      rm -rf -- "$work"
+    else
+      out=$(crun "$prompt File: $abs" --add-dir "${abs:h}" < /dev/null) || rc=1
+      printf '%s: %s\n%s\n' "$cmd" "$abs" "$out"
+    fi
+  done
+  return $rc
+}
+
+# Print files with a header each, as context to pipe into crun_ro
+_crun_context() {
+  local file
+  for file in "$@"; do
+    printf '=== %s ===\n' "${file:A}"
+    cat -- "$file"
+    printf '\n'
+  done
+}
+
+# Reformat files in place: crun_format [-n|--dry] <file>...
+crun_format() {
+  _crun_each crun_format "Improve the formatting and readability of the file below by \
+editing it in place. Fix structure, spacing, indentation, headings, lists, tables and \
+code fences. Do not add, remove or reword any content. Reply with one line summarizing \
+the changes." "$@"
+}
+
+# Fix spelling, grammar and punctuation in place: crun_fix [-n|--dry] <file>...
+crun_fix() {
+  _crun_each crun_fix "Fix spelling, grammar and punctuation in the file below by \
+editing it in place. Do not reword, restructure or change meaning or tone, and leave \
+code blocks, URLs, links and frontmatter untouched. Reply with one line summarizing \
+the changes." "$@"
+}
+
+# Add or refresh a table of contents: crun_toc [-n|--dry] <file>...
+crun_toc() {
+  _crun_each crun_toc "Add a table of contents to the markdown file below, or update it \
+if one exists (never duplicate it). Place it after the frontmatter and title, and \
+link to the headings (use [[#Heading]] links if the file uses wikilinks, otherwise \
+markdown anchors). Change nothing else. Reply with one line summarizing the changes." "$@"
+}
+
+# Add or normalize Obsidian YAML frontmatter: crun_front [-n|--dry] <file>...
+crun_front() {
+  _crun_each crun_front "Add or normalize the YAML frontmatter at the top of the \
+markdown file below by editing it in place. Ensure these keys: tags (lowercase list \
+inferred from the content), aliases (list, may be empty) and created (YYYY-MM-DD; use \
+@MTIME@ if missing). Keep all existing keys and values, and do not touch the body. \
+Reply with one line summarizing the changes." "$@"
+}
+
+# Split a long note into atomic notes: crun_split [-n|--dry] <file>...
+crun_split() {
+  _crun_each crun_split "Split the markdown file below into atomic notes, one idea per \
+note, created as new files with descriptive titles in the same directory. Keep the \
+original file as an index note that links to the new notes with [[wikilinks]], and link \
+the new notes to each other where relevant. Do not lose any content. Reply with the \
+list of created files." "$@"
+}
+
+# Ask a question about files (read-only): crun_ask <file>... "question"
+crun_ask() {
+  if (( $# < 2 )); then
+    echo "Usage: crun_ask <file> [file ...] \"question\"" >&2
+    return 1
+  fi
+
+  local question=${@[-1]} file
+  local -a files=("${@[1,-2]}")
+  for file in "${files[@]}"; do
+    [[ -f $file ]] || { echo "Not a file: $file" >&2; return 1 }
+  done
+  _crun_context "${files[@]}" | crun_ro "$question"
+}
+
+# Summarize files in at most 3 lines each (read-only): crun_sum <file>...
+crun_sum() {
+  if (( $# == 0 )); then
+    echo "Usage: crun_sum <file> [file ...]" >&2
+    return 1
+  fi
+
+  local file out rc=0
+  for file in "$@"; do
+    if [[ ! -f $file ]]; then
+      echo "Skipping '$file': not a file" >&2
+      rc=1
+      continue
+    fi
+    out=$(crun_ro "Summarize this file in at most 3 short lines. Output only the summary." \
+      < "$file") || rc=1
+    printf '== %s ==\n%s\n' "$file" "$out"
+  done
+  return $rc
+}
+
+# Explain what a JSON config does and flag problems (read-only): crun_explain <file.json>
+crun_explain() {
+  if [[ ! -f $1 ]]; then
+    echo "Usage: crun_explain <file.json>" >&2
+    return 1
+  fi
+  crun_ro "Explain what this JSON file is for and what its main sections do. Then list \
+anything notable: suspicious, deprecated, insecure or likely misconfigured values, and \
+syntax errors if the JSON is invalid. Be concise." < "$1"
+}
+
+# Translate files into <lang>, written next to the original as name.<lang>.ext
+#   crun_tr <lang> <file>...
+crun_tr() {
+  if (( $# < 2 )); then
+    echo "Usage: crun_tr <lang> <file> [file ...]" >&2
+    return 1
+  fi
+
+  local lang=$1 file out tmp rc=0
+  shift
+  for file in "$@"; do
+    if [[ ! -f $file ]]; then
+      echo "Skipping '$file': not a file" >&2
+      rc=1
+      continue
+    fi
+
+    out=${file:r}.${(L)lang// /-}
+    [[ -n ${file:e} ]] && out+=.${file:e}
+    if [[ -e $out ]]; then
+      echo "Skipping '$file': $out already exists" >&2
+      rc=1
+      continue
+    fi
+
+    echo "Translating $file -> $out"
+    tmp=$(mktemp) || return 1
+    if crun_ro "Translate this document to $lang. Keep all markdown formatting, \
+frontmatter keys, code blocks, URLs and [[wikilinks]] intact and translate only the \
+human-readable text. Output only the translated document, with no preamble and no code \
+fences around it." < "$file" > "$tmp" && [[ -s $tmp ]]; then
+      cat -- "$tmp" > "$out"
+    else
+      echo "Translation failed for '$file'" >&2
+      rc=1
+    fi
+    rm -f -- "$tmp"
+  done
+  return $rc
+}
+
+# Write a commit message for the staged changes, matching recent commit style.
+# Prints it by default; with -c it opens the commit editor prefilled with it.
+#   crun_commit [-c]
+crun_commit() {
+  local commit=0 recent msg
+  [[ $1 == -c ]] && commit=1
+
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "Not a git repository" >&2
+    return 1
+  fi
+  if git diff --staged --quiet; then
+    echo "Nothing staged. Stage changes with 'git add' first." >&2
+    return 1
+  fi
+
+  recent=$(git log -5 --pretty=%s 2> /dev/null)
+  msg=$(git diff --staged | head -c 300000 | crun_ro "Write a git commit message for \
+the staged diff on stdin. Match the style of these recent commit subjects:
+$recent
+Output only the message: a subject line of at most 72 characters, plus a short body \
+only if the change needs it. No code fences.") || return 1
+
+  print -r -- "$msg"
+  (( commit )) && git commit -e -m "$msg"
+}
+
+# Run a crun_* command over many files in parallel: crun_par [-j N] <command> <file>...
+crun_par() {
+  local n=4
+  if [[ $1 == -j ]]; then
+    n=$2
+    shift 2
+  fi
+  if (( $# < 2 )); then
+    echo "Usage: crun_par [-j N] <command> <file> [file ...]" >&2
+    return 1
+  fi
+
+  local cmd=$1
+  shift
+  if (( ! $+functions[$cmd] )); then
+    echo "Unknown command: $cmd" >&2
+    return 1
+  fi
+  printf '%s\0' "$@" \
+    | xargs -0 -n1 -P"$n" zsh -c 'source ~/.zsh_commands; "$@"' _ "$cmd"
+}
+
+
+# ------------------------------------------------------------------------------
+# JSON
+# ------------------------------------------------------------------------------
+
+# Apply a jq filter to each file in place, leaving invalid files untouched
+#   _jq_inplace [jq args...] -- <file>...
+_jq_inplace() {
+  local -a jqargs=()
+  while (( $# )) && [[ $1 != -- ]]; do
+    jqargs+=("$1")
+    shift
+  done
+  shift
+
+  local file tmp rc=0
+  for file in "$@"; do
+    if [[ ! -f $file ]]; then
+      echo "Skipping '$file': not a file" >&2
+      rc=1
+      continue
+    fi
+
+    tmp=$(mktemp) || return 1
+    if jq "${jqargs[@]}" "$file" > "$tmp"; then
+      cat -- "$tmp" > "$file"
+    else
+      echo "Left unchanged (invalid JSON?): $file" >&2
+      rc=1
+    fi
+    rm -f -- "$tmp"
+  done
+  return $rc
+}
+
+# Pretty-print and validate JSON files in place: jfmt <file>...
+jfmt() {
+  (( $# )) || { echo "Usage: jfmt <file.json> [...]" >&2; return 1 }
+  _jq_inplace . -- "$@"
+}
+
+# Minify JSON files in place: jmin <file>...
+jmin() {
+  (( $# )) || { echo "Usage: jmin <file.json> [...]" >&2; return 1 }
+  _jq_inplace -c . -- "$@"
+}
+
+# Sort object keys (recursively) and pretty-print in place: jsort <file>...
+jsort() {
+  (( $# )) || { echo "Usage: jsort <file.json> [...]" >&2; return 1 }
+  _jq_inplace -S . -- "$@"
+}
+
+# List every distinct key path, with array indices collapsed to []: jkeys <file>
+jkeys() {
+  [[ -f $1 ]] || { echo "Usage: jkeys <file.json>" >&2; return 1 }
+  jq -r '[paths | map(if type == "number" then "[]" else . end) | join(".")
+          | gsub("\\.\\[\\]"; "[]")] | unique[]' "$1"
+}
+
+# Diff two JSON files after normalizing key order: jdiff <a.json> <b.json>
+jdiff() {
+  if [[ ! -f $1 || ! -f $2 ]]; then
+    echo "Usage: jdiff <a.json> <b.json>" >&2
+    return 1
+  fi
+  diff -u --color=auto --label "$1" --label "$2" <(jq -S . "$1") <(jq -S . "$2")
+}
+
+# Look up a value with a jq path, strings printed raw: jget <file> <.path.to.key>
+jget() {
+  if [[ ! -f $1 || -z $2 ]]; then
+    echo "Usage: jget <file.json> <.path.to.key>" >&2
+    return 1
+  fi
+  jq -r "$2" "$1"
+}
+
+# Turn an array of objects into a markdown table (or CSV with --csv).
+# An optional jq filter selects the array: jtable [--csv] <file> [.items]
+jtable() {
+  local csv=0
+  [[ $1 == --csv ]] && { csv=1; shift }
+  if [[ ! -f $1 ]]; then
+    echo "Usage: jtable [--csv] <file.json> [jq-filter]" >&2
+    return 1
+  fi
+
+  local arr=${2:-.}
+  local cols='(reduce .[] as $o ([]; . + (($o | keys_unsorted) - .))) as $cols | '
+  if (( csv )); then
+    jq -r "$arr | $cols"'$cols, (.[] | . as $r | $cols
+      | map($r[.] | if type == "object" or type == "array" then tojson else . end))
+      | @csv' "$1"
+  else
+    jq -r "$arr | $cols"'"| " + ($cols | join(" | ")) + " |",
+      "|" + ($cols | map("---") | join("|")) + "|",
+      (.[] | . as $r | "| " + ($cols | map($r[.]
+        | if . == null then "" elif type == "string" then . else tojson end
+        | gsub("\\|"; "\\|") | gsub("\n"; " ")) | join(" | ")) + " |")' "$1"
+  fi
+}
+
+# Validate every *.json under a directory and list the broken ones: jcheck [dir]
+jcheck() {
+  local root=${1:-.} file err total=0 bad=0
+  while IFS= read -r -d '' file; do
+    ((++total))
+    if ! err=$(jq empty "$file" 2>&1); then
+      ((++bad))
+      echo "✗ $file: ${err%%$'\n'*}"
+    fi
+  done < <(find "$root" \( -name .git -o -name node_modules \) -prune -o \
+    -type f -name '*.json' -print0)
+
+  echo "$total files checked, $bad invalid"
+  (( bad == 0 ))
+}
+
+
+# ------------------------------------------------------------------------------
+# Markdown / Obsidian
+# ------------------------------------------------------------------------------
+
+# Vault root: nearest parent holding .obsidian, else the current directory
+_md_root() {
+  local dir=$PWD
+  while [[ $dir != / ]]; do
+    if [[ -d $dir/.obsidian ]]; then
+      print -r -- $dir
+      return
+    fi
+    dir=${dir:h}
+  done
+  print -r -- $PWD
+}
+
+# find *.md under a root, skipping vault/tool dirs; extra args are the find action
+#   _md_find <root> -print0
+_md_find() {
+  local root=$1
+  shift
+  find "$root" \( -name .obsidian -o -name .git -o -name .trash -o -name node_modules \) \
+    -prune -o -type f -name '*.md' "$@"
+}
+
+# List unchecked tasks (- [ ]) across the vault: mdtodo [dir]
+mdtodo() {
+  local root=${1:-$(_md_root)}
+  [[ -d $root ]] || { echo "Not a directory: $root" >&2; return 1 }
+  (cd "$root" && grep -rnE --include='*.md' --exclude-dir={.obsidian,.git,.trash,node_modules} \
+    '^[[:space:]]*[-*+] \[ \]' .) | sed -E 's#^\./##'
+}
+
+# List notes linking to a note ([[name]], [[name|alias]], [[name#heading]], ![[name]])
+#   mdback <note> [dir]
+mdback() {
+  if [[ -z $1 ]]; then
+    echo "Usage: mdback <note> [dir]" >&2
+    return 1
+  fi
+  local name=${${1:t}%.md} root=${2:-$(_md_root)} esc
+  esc=$(printf '%s' "$name" | sed 's/[][\.^$*+?(){}|\/]/\\&/g')
+  (cd "$root" && grep -rniE --include='*.md' --exclude-dir={.obsidian,.git,.trash,node_modules} \
+    "\[\[([^]|#]*/)?${esc}([|#^]|\]\])" .) | sed -E 's#^\./##'
+}
+
+# List notes that no other note links to: mdorphans [dir]
+mdorphans() {
+  local root=${1:-$(_md_root)} targets files
+  [[ -d $root ]] || { echo "Not a directory: $root" >&2; return 1 }
+  targets=$(mktemp) || return 1
+  files=$(mktemp) || return 1
+
+  {
+    _md_find "$root" -exec grep -ohE '\[\[[^]]+\]\]' {} + \
+      | sed -E 's/^\[\[//; s/\]\]$//; s/[|#^].*$//; s#.*/##; s/\.md$//'
+    _md_find "$root" -exec grep -ohE '\]\([^)]+\.md[^)]*\)' {} + \
+      | sed -E 's/^\]\(//; s/\)$//; s/#.*$//; s#.*/##; s/\.md$//; s/%20/ /g'
+  } > "$targets"
+  _md_find "$root" -printf '%P\t%f\n' > "$files"
+
+  awk -F'\t' '
+    FILENAME == ARGV[1] { seen[tolower($0)] = 1; next }
+    { name = $2; sub(/\.md$/, "", name); if (!(tolower(name) in seen)) print $1 }
+  ' "$targets" "$files" | sort
+  rm -f -- "$targets" "$files"
+}
+
+# Most recently modified notes: mdrecent [n]
+mdrecent() {
+  local n=${1:-10} root
+  root=$(_md_root)
+  _md_find "$root" -printf '%TY-%Tm-%Td %TH:%TM  %P\n' | sort -r | head -n "$n"
+}
+
+# Words, headings, links and tasks per markdown file: mdstats <file>...
+mdstats() {
+  if (( $# == 0 )); then
+    echo "Usage: mdstats <file.md> [...]" >&2
+    return 1
+  fi
+
+  local file nwords nheadings nlinks nopen ndone rc=0
+  printf '%-48s %7s %9s %6s %5s %5s\n' FILE WORDS HEADINGS LINKS OPEN DONE
+  for file in "$@"; do
+    if [[ ! -f $file ]]; then
+      echo "Skipping '$file': not a file" >&2
+      rc=1
+      continue
+    fi
+    nwords=$(wc -w < "$file")
+    nheadings=$(grep -cE '^#{1,6} ' "$file")
+    nlinks=$(grep -oE '\[\[[^]]+\]\]|\]\([^)]+\)' "$file" | wc -l)
+    nopen=$(grep -cE '^[[:space:]]*[-*+] \[ \]' "$file")
+    ndone=$(grep -ciE '^[[:space:]]*[-*+] \[x\]' "$file")
+    printf '%-48.48s %7d %9d %6d %5d %5d\n' \
+      "${file:t}" "$nwords" "$nheadings" "$nlinks" "$nopen" "$ndone"
+  done
+  return $rc
+}
+
+# Fuzzy-pick a note (with preview) and open it in $EDITOR: mdopen [query]
+# Needs fzf; previews with glow or bat if installed (see "External tools" at the top).
+mdopen() {
+  if (( ! $+commands[fzf] )); then
+    echo "fzf is not installed" >&2
+    return 1
+  fi
+
+  local root sel previewer='cat {}'
+  root=$(_md_root)
+  (( $+commands[bat] )) && previewer='bat --color=always --style=plain --language=markdown {}'
+  (( $+commands[glow] )) && previewer='glow -s dark {}'
+
+  sel=$(cd "$root" && _md_find . -printf '%P\0' \
+    | fzf --read0 --query "$1" --preview "$previewer") || return
+  [[ -n $sel ]] && ${EDITOR:-vim} "$root/$sel"
+}
+
+# Convert markdown to pdf, docx or html with pandoc: mdpdf [-t pdf|docx|html] <file>...
+# Needs pandoc, plus LaTeX for pdf (XeLaTeX is used when installed, for Unicode text).
+# Install lines are in the "External tools" block at the top of this file.
+mdpdf() {
+  local -a opt_t
+  zparseopts -D -E t:=opt_t
+  local fmt=${opt_t[-1]:-pdf}
+
+  if (( $# == 0 )); then
+    echo "Usage: mdpdf [-t pdf|docx|html] <file.md> [...]" >&2
+    return 1
+  fi
+  if (( ! $+commands[pandoc] )); then
+    echo "pandoc is not installed" >&2
+    return 1
+  fi
+
+  local -a engine=()
+  if [[ $fmt == pdf ]] && (( $+commands[xelatex] )); then
+    engine=(--pdf-engine=xelatex -V 'mainfont=DejaVu Serif')
+  fi
+
+  local file rc=0
+  for file in "$@"; do
+    if [[ ! -f $file ]]; then
+      echo "Skipping '$file': not a file" >&2
+      rc=1
+      continue
+    fi
+    echo "$file -> ${file:r}.$fmt"
+    pandoc "$file" -o "${file:r}.$fmt" "${engine[@]}" || rc=1
+  done
+  return $rc
+}
