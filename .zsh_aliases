@@ -62,11 +62,6 @@ alias ssh-107-plots='sshpass -f password ssh spyder@192.168.50.107 "ps -aux | gr
 alias ssh-108='sshpass -f password ssh spyder@192.168.50.108'
 alias ssh-108-plots='sshpass -f password ssh spyder@192.168.50.108 "ps -aux | grep \"chia plots\""'
 
-# opencode aliases
-alias run='opencode run'
-# alias run_commit='run "Add all changes, create proper and concise commit message and commit the changes"'
-alias run_commit='opencode run "/commit "'
-
 # Git common aliases
 alias gg='git status'
 
