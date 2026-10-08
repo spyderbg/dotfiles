@@ -134,6 +134,14 @@ if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
+# Commands definitions.
+# You may want to pu all your custom commands into a separate file like
+# ~/.zsh_commands, instead of adding them here directly.
+
+if [ -f ~/.zsh_commands ]; then
+	. ~/.zsh_commands
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
