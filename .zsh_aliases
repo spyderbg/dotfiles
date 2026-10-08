@@ -16,6 +16,8 @@ alias venv_install='pip3 install --upgrade -r requirements.txt'
 alias rg='rg -i'                                                                                                        
 alias pp='cd "$(pwd -P)"'                                                                                               
 alias err='journalctl -p err -b'
+alias errs='journalctl -p err -b -o short-monotonic'
+alias errw='journalctl -p warning -b'
 
 # Ports                                                                                                                 
 alias lsof_tcp="sudo lsof -nP -iTCP -sTCP:LISTEN" 
