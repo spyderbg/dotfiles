@@ -86,6 +86,14 @@ crun() {
     --permission-mode acceptEdits
 }
 
+# Cheaper and faster variant of crun that uses Claude Haiku, for simple mechanical edits
+crun_low() {
+  claude -p "$@" \
+    --model claude-haiku-5-5 \
+    --effort medium \
+    --permission-mode acceptEdits
+}
+
 # Read-only variant of crun: edits are denied, pipe context in via stdin
 crun_ro() {
   claude -p "$@" \
@@ -94,7 +102,28 @@ crun_ro() {
     --disallowedTools "Edit Write NotebookEdit"
 }
 
-# Run crun with an instruction on each file (backend of the crun_* edit commands)
+# Read-only variant of crun_low: Haiku, edits are denied, pipe context in via stdin
+crun_ro_low() {
+  claude -p "$@" \
+    --model claude-haiku-5-5 \
+    --effort medium \
+    --disallowedTools "Edit Write NotebookEdit"
+}
+
+# Pick the model tier for a crun_* edit command, printing the function to run it with:
+#   crun_low  easy, mechanical tasks (Haiku)
+#   crun      tasks needing judgment, where mistakes are costly (Sonnet)
+# Unlisted commands default to crun. Move a command between the lists to change its tier.
+_crun_tier() {
+  case $1 in
+    crun_fix | crun_format | crun_toc | crun_front) echo crun_low ;;
+    crun_split) echo crun ;;
+    *) echo crun ;;
+  esac
+}
+
+# Run crun (or crun_low, see _crun_tier) with an instruction on each file (backend of the
+# crun_* edit commands)
 #   _crun_each <command-name> <instruction> [-n|--dry] <file>...
 # @MTIME@ in the instruction expands to the file's modification date (YYYY-MM-DD).
 # --dry works on a temp copy and prints a diff instead of touching the real file.
@@ -110,7 +139,8 @@ _crun_each() {
     return 1
   fi
 
-  local file abs work prompt out g rc=0
+  local file abs work prompt out g rc=0 runner
+  runner=$(_crun_tier "$cmd")
   for file in "$@"; do
     if [[ ! -f $file ]]; then
       echo "Skipping '$file': not a file" >&2
@@ -124,7 +154,7 @@ _crun_each() {
     if (( dry )); then
       work=$(mktemp -d) || return 1
       cp -- "$file" "$work/${abs:t}"
-      out=$(crun "$prompt File: $work/${abs:t}" --add-dir "$work" < /dev/null) || rc=1
+      out=$($runner "$prompt File: $work/${abs:t}" --add-dir "$work" < /dev/null) || rc=1
       printf '%s (dry run): %s\n%s\n' "$cmd" "$abs" "$out"
       for g in "$work"/*(N.); do
         if [[ ${g:t} == ${abs:t} ]]; then
@@ -138,7 +168,7 @@ _crun_each() {
       done
       rm -rf -- "$work"
     else
-      out=$(crun "$prompt File: $abs" --add-dir "${abs:h}" < /dev/null) || rc=1
+      out=$($runner "$prompt File: $abs" --add-dir "${abs:h}" < /dev/null) || rc=1
       printf '%s: %s\n%s\n' "$cmd" "$abs" "$out"
     fi
   done
@@ -317,10 +347,11 @@ crun_commit() {
     !code { print }
   ' "$spec")
 
-  msg=$(git diff --staged | head -c 300000 | crun_ro "The staged git diff is on stdin. \
+  msg=$(git diff --staged | head -c 300000 | crun_ro_low "The staged git diff is on stdin. \
 Follow the commit message instructions below, but do not run any commands: the changes \
 are already staged and the caller will commit. Ignore any steps about running git or \
-reporting results. Output only the commit message, with no code fences.
+reporting results. Output only the commit message, with no code fences and no trailers \
+such as Co-Authored-By.
 
 $rules") || return 1
 
