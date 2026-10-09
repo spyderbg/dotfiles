@@ -285,19 +285,20 @@ fences around it." < "$file" > "$tmp" && [[ -s $tmp ]]; then
   return $rc
 }
 
-# Write a commit message for the staged changes, matching recent commit style.
-# Prints it by default; with -c it opens the commit editor prefilled with it.
-#   crun_commit [-c]
+# Stage all modified and new files, write a commit message for them matching recent
+# commit style, and commit. With -n it only prints the message (files stay staged).
+#   crun_commit [-n]
 crun_commit() {
-  local commit=0 recent msg
-  [[ $1 == -c ]] && commit=1
+  local commit=1 recent msg
+  [[ $1 == -n ]] && commit=0
 
   if ! git rev-parse --git-dir > /dev/null 2>&1; then
     echo "Not a git repository" >&2
     return 1
   fi
+  git add -A || return 1
   if git diff --staged --quiet; then
-    echo "Nothing staged. Stage changes with 'git add' first." >&2
+    echo "Nothing to commit." >&2
     return 1
   fi
 
@@ -309,7 +310,7 @@ Output only the message: a subject line of at most 72 characters, plus a short b
 only if the change needs it. No code fences.") || return 1
 
   print -r -- "$msg"
-  (( commit )) && git commit -e -m "$msg"
+  (( commit )) && git commit -m "$msg"
 }
 
 # Run a crun_* command over many files in parallel: crun_par [-j N] <command> <file>...
