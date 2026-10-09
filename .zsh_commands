@@ -117,7 +117,7 @@ crun_ro_low() {
 _crun_tier() {
   case $1 in
     crun_fix | crun_format | crun_toc | crun_front) echo crun_low ;;
-    crun_split) echo crun ;;
+    crun_split | crun_headings) echo crun ;;
     *) echo crun ;;
   esac
 }
@@ -199,6 +199,22 @@ crun_fix() {
 editing it in place. Do not reword, restructure or change meaning or tone, and leave \
 code blocks, URLs, links and frontmatter untouched. Reply with one line summarizing \
 the changes." "$@"
+}
+
+# Add section headings based on the content: crun_headings [-n|--dry] <file>...
+crun_headings() {
+  _crun_each crun_headings "Add section headings to the markdown file below, based on \
+its content, by editing it in place. Insert a heading only where a new topic starts and \
+the text has no heading yet. Keep every existing heading exactly as it is: do not \
+rename, remove, move, merge or renumber it, and do not add a heading right next to one. \
+Follow the file's existing heading style and levels: give a new heading the level its \
+topic has in the outline (one level below the heading it belongs under, or the same \
+level as an existing heading if it is an unrelated topic), never deeper than ####, and \
+do not add a second # title if the file already has one (add a # title only if it has \
+none, after any frontmatter). \
+Keep headings short and descriptive, in the same language as the text. Do not touch \
+frontmatter, code blocks or the body text, and do not add, remove or reword any content. \
+Reply with one line summarizing the headings added." "$@"
 }
 
 # Add or refresh a table of contents: crun_toc [-n|--dry] <file>...
