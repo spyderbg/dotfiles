@@ -285,15 +285,20 @@ fences around it." < "$file" > "$tmp" && [[ -s $tmp ]]; then
   return $rc
 }
 
-# Stage all modified and new files, write a commit message for them matching recent
-# commit style, and commit. With -n it only prints the message (files stay staged).
+# Stage all modified and new files, write a commit message for them following the
+# opencode /commit command (~/.config/opencode/commands/commit.md), and commit.
+# With -n it only prints the message (files stay staged).
 #   crun_commit [-n]
 crun_commit() {
-  local commit=1 recent msg
+  local commit=1 spec=~/.config/opencode/commands/commit.md rules msg
   [[ $1 == -n ]] && commit=0
 
   if ! git rev-parse --git-dir > /dev/null 2>&1; then
     echo "Not a git repository" >&2
+    return 1
+  fi
+  if [[ ! -r $spec ]]; then
+    echo "Commit command not found: $spec" >&2
     return 1
   fi
   git add -A || return 1
@@ -302,15 +307,27 @@ crun_commit() {
     return 1
   fi
 
-  recent=$(git log -5 --pretty=%s 2> /dev/null)
-  msg=$(git diff --staged | head -c 300000 | crun_ro "Write a git commit message for \
-the staged diff on stdin. Match the style of these recent commit subjects:
-$recent
-Output only the message: a subject line of at most 72 characters, plus a short body \
-only if the change needs it. No code fences.") || return 1
+  # Reuse the command's instructions minus its frontmatter and shell blocks (staging and
+  # committing are done here, not by the model)
+  rules=$(awk '
+    NR == 1 && /^---$/ { fm = 1; next }
+    fm && /^---$/ { fm = 0; next }
+    fm { next }
+    /^```/ { code = !code; next }
+    !code { print }
+  ' "$spec")
+
+  msg=$(git diff --staged | head -c 300000 | crun_ro "The staged git diff is on stdin. \
+Follow the commit message instructions below, but do not run any commands: the changes \
+are already staged and the caller will commit. Ignore any steps about running git or \
+reporting results. Output only the commit message, with no code fences.
+
+$rules") || return 1
 
   print -r -- "$msg"
-  (( commit )) && git commit -m "$msg"
+  if (( commit )); then
+    git commit -m "$msg"
+  fi
 }
 
 # Run a crun_* command over many files in parallel: crun_par [-j N] <command> <file>...
