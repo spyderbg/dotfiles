@@ -7,8 +7,10 @@
 !.Xmodmap
 !.bashrc
 !.bash_aliases
+!.bash_commands
 !.zshrc
 !.zsh_aliases
+!.zsh_commands
 !.git_local_config
 !.gitconfig
 !.gitignore
@@ -17,6 +19,18 @@
 !.ssh/config
 !.ssh/config
 !.vimrc
+!.tmux.conf
+!.p10k.zsh
+
+# Nested files: each parent folder must be un-ignored, then its other contents re-ignored
+!.config/
+.config/*
+!.config/opencode/
+.config/opencode/*
+!.config/opencode/commands/
+.config/opencode/commands/*
+!.config/opencode/commands/commit.md
+
 !README.md
 !Install_zsh.md
 !term.jpg
