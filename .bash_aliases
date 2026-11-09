@@ -14,90 +14,9 @@ alias pp='cd "$(pwd -P)"'
 # System aliases
 alias duc='du . -h -d 1'
 
-# Git aliases
-alias g='git'
-alias ga='git add'
-alias gap='ga . ; git restore --staged UserSettings/Layouts/default-2022.dwlt ; git restore --staged ProjectSettings/ProjectVersion.txt ; git restore --staged ProjectSettings/ProjectSettings.asset'
-alias gp='git push'
-alias gpn='git push --set-upstream origin'
-alias gpc='git push --set-upstream origin $(git branch --show-current)'
-alias gpf='git push --force-with-lease'
-alias gpullrec='for dir in */; do (cd "$dir" && [ -d .git ] && echo && echo "Pulling in $dir" && git pull); done'
-alias gsup='git submodule update'
-alias gsubpull='git pull && git submodule update'
-alias gr='git restore --staged'
-alias gg='git status'
-alias ggs='git status -s | cut -c4-'
-alias gt='git tag'
-alias gb='git branch'
-alias gc='git checkout'
-alias gf='git fetch'
-alias gfa='git fetch --all'
-alias gfp='git fetch --prune'
-alias gs='git stash'
-alias gsl='git stash list'
-alias gsa='git stash apply'
-alias gsa0='git stash apply stash@{0}'
-alias gsa1='git stash apply stash@{1}'
-alias gsa2='git stash apply stash@{2}'
-alias gsa3='git stash apply stash@{3}'
-alias gsa4='git stash apply stash@{4}'
-alias gsa5='git stash apply stash@{5}'
-alias gsd0='git stash drop stash@{0}'
-alias gsd1='git stash drop stash@{1}'
-alias gsd2='git stash drop stash@{2}'
-alias gsd3='git stash drop stash@{3}'
-alias gsd4='git stash drop stash@{4}'
-alias gsd5='git stash drop stash@{5}'
-alias gsc='git stash clear'
-alias gsp='git stash push -m'
-alias gspop='git stash pop'
-alias gm='git commit'
-alias gma='git commit --amend'
-alias gmcode='git commit -am "Code refactoring" && git push'
-alias gd='git diff'
-alias gds='git diff --chached'
-alias glp='git log -p -1'
-alias glone='git log --oneline'
-alias gl='clear && git graph --since=yesterday'
-alias glt='clear && git log --since=yesterday'
-alias glgt='clear && git lola -25'
-alias gspull='git stash && git pull && git stash apply'
-alias grebase='git rebase dev'
-alias grelease='git checkout main && git pull && git merge dev && git push && git checkout -'
-alias gdelete='git push origin -d'
-alias gclean='git for-each-ref --format="%(refname:short) %(upstream:track)" refs/heads | awk '\''$2 == "[gone]" {print $1}'\'' | xargs -r git branch -D'
-alias grmmerged='git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d' 
-alias gsub='cat .gitmodules | grep path | awk "{print $3}"'
-alias gm1='cat .gitmodules | grep path -m1 | sed "s/path\ =\ //g"'
-alias gm2='cat .gitmodules | grep path | sed "1,1d" | sed "s/path\ =\ //g"'
-alias gm3='cat .gitmodules | grep path | sed "2,1d" | sed "s/path\ =\ //g"'
-alias gcdm1='cd $(gm1)'
-alias gcdm2='cd $(gm2)'
-alias gcdm3='cd $(gm3)'
-alias ghash='git rev-parse --short HEAD'
-alias ghashx='git rev-parse --short HEAD | xclip'
-
 # Svn aliases
 # alias ss='svn stat'
 # alias sa='svn add'
-
-# Docker aliases
-alias di="sudo docker image"
-alias dis="sudo docker images"
-alias dc="sudo docker container"
-alias dc-ls='sudo docker container ls --format="table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Image}}"'
-alias dn="sudo docker network"
-alias dcomp="sudo docker compose"
-alias dcompup="sudo docker compose up -d"
-alias dcompdown="sudo docker compose down"
-alias db="sudo docker build"
-alias dps="sudo docker ps"
-alias drun="sudo docker run"
-alias dstop="sudo docker stop"
-alias drestart="sudo dcoker restart"
-alias dpull="sudo docker pull"
-alias dexec="sudo docker exec -it"
 
 # dotnet aliases
 alias dotb='dotnet build --project'
@@ -106,6 +25,15 @@ alias dotr='dotnet run --project'
 alias dotdbu='dotnet ef database update'
 alias puml='puml-gen ./ ./puml -dir -ignore Private,Protected --allInOne'
 
+# Git aliases
+if [ -f ~/.git_aliases ]; then
+    . ~/.git_aliases
+fi
+
+# Docker aliases
+if [ -f ~/.docker_aliases ]; then
+    . ~/.docker_aliases
+fi
 
 # SSH machines
 alias ssh-office='sshpass -f office_psw ssh spyder@151.251.174.127'

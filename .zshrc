@@ -216,3 +216,4 @@ export PATH='/home/spyder/.local/bin':$PATH
 if [[ "$(uname -s)" == "Darwin" ]]; then
     . "/Users/spyder/.unity/env"
 fi
+export PATH="$HOME/.local/bin:$PATH"
