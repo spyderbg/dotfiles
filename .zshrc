@@ -147,13 +147,33 @@ fi
 
 
 # zoxide ##################################################
-eval "$(zoxide init zsh)"
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init zsh)"
+fi
 
 
 # Set up fzf key bindings and fuzzy completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# ~/.fzf.zsh (git install) adds ~/.fzf/bin to PATH and loads fzf itself;
+# otherwise load it directly if fzf is installed another way (apt, brew)
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+elif command -v fzf &> /dev/null; then
+    source <(fzf --zsh)
+fi
 
-source <(fzf --zsh)
+
+# yazi ####################################################
+# Use 'yy' instead of 'yazi' to cd into the last directory on exit
+if command -v yazi &> /dev/null; then
+    function yy() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+        yazi "$@" --cwd-file="$tmp"
+        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            cd -- "$cwd"
+        fi
+        rm -f -- "$tmp"
+    }
+fi
 
 
 # Added by LM Studio CLI tool (lms) #######################
@@ -176,44 +196,13 @@ export PATH=~/.npm-global/bin:$PATH
 # opencode ################################################
 export PATH=~/.opencode/bin:$PATH
 
-###-begin-opencode-completions-###
-#
-# yargs command completion script
-#
-# Installation: opencode completion >> ~/.bashrc
-#    or opencode completion >> ~/.bash_profile on OSX.
-#
-_opencode_yargs_completions()
-{
-    local cur_word args type_list
-
-    cur_word="${COMP_WORDS[COMP_CWORD]}"
-    args=("${COMP_WORDS[@]}")
-
-    # ask yargs to generate completions.
-    # see https://stackoverflow.com/a/40944195/7080036 for the spaces-handling awk
-    mapfile -t type_list < <(opencode --get-yargs-completions "${args[@]}")
-    mapfile -t COMPREPLY < <(compgen -W "$( printf '%q ' "${type_list[@]}" )" -- "${cur_word}" |
-        awk '/ / { print "\""$0"\"" } /^[^ ]+$/ { print $0 }')
-
-    # if no match was found, fall back to filename completion
-    if [ ${#COMPREPLY[@]} -eq 0 ]; then
-      COMPREPLY=()
-    fi
-
-    return 0
-}
-complete -o bashdefault -o default -F _opencode_yargs_completions opencode
-###-end-opencode-completions-###
-
-
-# Qwen Code PATH block begin
-export PATH='/home/spyder/.local/bin':$PATH
-# Qwen Code PATH block end
+if command -v opencode &> /dev/null; then
+    source <(opencode --completions zsh)
+fi
 
 
 # Unity CLI (macOS/OSX only)
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    . "/Users/spyder/.unity/env"
+if [[ "$(uname -s)" == "Darwin" ]] && [ -f "$HOME/.unity/env" ]; then
+    . "$HOME/.unity/env"
 fi
 export PATH="$HOME/.local/bin:$PATH"
