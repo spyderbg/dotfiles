@@ -36,9 +36,13 @@ alias fzfp="fzf --style full --preview 'fzf-preview.sh {}' --bind 'focus:transfo
 if which 'eza' &> /dev/null; then
 
 alias l='eza --icons --group-directories-first'
+alias ld='eza --icons --group-directories-first -d */'
 alias ll='eza -l --git --icons --group-directories-first'
+alias lld='eza -l --git --icons --group-directories-first -d */'
 alias la='eza -a --icons --group-directories-first'
+alias lad='eza -a --icons --group-directories-first -d */'
 alias lla='eza -al --git --icons --group-directories-first'
+alias llad='eza -al --git --icons --group-directories-first -d */'
 
 fi
 
