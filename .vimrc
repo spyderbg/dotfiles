@@ -7,13 +7,13 @@ if has("gui_running")
 	" Maximaze gvim window (for an alternative on Windows, see simulat below)
 	set lines=999 columns=122
 else
-	" This is console Vim.
-	if exists("+lines")
-		set lines=34
-	endif
-	if exists("+columns")
-		set columns=130
-	endif
+	" This is console Vim. NOTE: issue with 'tmux'
+	" if exists("+lines")
+		" set lines=34
+	" endif
+	" if exists("+columns")
+		" set columns=130
+	" endif
 endif
 
 
